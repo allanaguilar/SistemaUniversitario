@@ -36,7 +36,7 @@
 <%-- 
     Document   : index
     Created on : 28-ago-2017, 18:52:01
-    Author     : MarioBarahona
+    Author     : Allan Aguilar
 --%>
 
 <%@page import="Dba.OracleConn"%>
