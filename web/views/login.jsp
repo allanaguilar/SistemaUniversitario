@@ -3,8 +3,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>UNITEC</title>
-    <link href="static/css/main.css" rel="stylesheet" type="text/css" />
+    <title>Sistema Universitario | Login</title>
+    <!--<link href="static/css/main.css" rel="stylesheet" type="text/css" />-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <h1>Sistema Universitario</h1>
     </center>
     <div class="row">
-    <form class="login col-md-4 col-md-offset-4" action="autenticacion.jsp" method="POST">
+    <form class="login col-md-4 col-md-offset-4" action="../controlers/autenticacion.jsp" method="POST">
         <div class="form-group">
             <label for="exampleInputEmail1">Usuario</label>
             <input type="text" class="form-control" name="user" placeholder="User ID">
