@@ -1,0 +1,244 @@
+<%-- 
+    Document   : menu_principal
+    Created on : 09-10-2017, 09:42:41 PM
+    Author     : aguilar
+--%>
+<%//seguridad del sistema%>
+<%if (session.getAttribute("s_user") == null) {
+        request.getRequestDispatcher("index.html").forward(request, response);
+    }
+%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <title>JSP Page</title>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Sistema Universitario</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logueado como <span class="login-name"><%=session.getAttribute("s_nombre")%></span> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Modificar Perfil</a></li>
+                                <!--                                <li><a href="#">Another action</a></li>
+                                                                <li><a href="#">Something else here</a></li>-->
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!--<div class="container">-->
+        <div>
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation" class="active"><a id="reg-inicio" href="#">Inicio</a></li>
+                    <li role="presentation"><a id="reg-info-gen" href="#">Informacion General</a></li>
+                    <li role="presentation"><a id="reg-btn-periodos" href="#">Periodos de Clases</a></li>
+                    <li role="presentation"><a href="#">Alumnos</a></li>
+                    <li role="presentation"><a href="#">Maestros</a></li>
+                    <li role="presentation"><a href="#">Carreras</a></li>
+                    <li role="presentation"><a href="#">Clases</a></li>
+                    <li role="presentation"><a href="#">Precios</a></li>
+                    <li role="presentation"><a href="#">Rutas</a></li>
+                    <li role="presentation"><a href="#">Usuarios</a></li>
+                    <li role="presentation"><a href="#">Reportes</a></li>
+                    <li role="presentation"><a href="#">Salir</a></li>
+                </ul>
+            </div>
+            <div class="col-md-7 col-md-offset-1 ">
+                <div id="reg-title" class="collapse in"> 
+                    <div class="jumbotron">
+                        <div class="container">
+                            <h1>Area Administrativa</h1>
+                            <p>Bienvenido al area administrativa del sistema</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="reg-confi-sis" class="collapse">
+                    <div  class="page-header">
+                        <h1>Informacion general del sistema</h1>
+                    </div>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Nombre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="uni-nombre" placeholder="Escriba el nombre de la insitucion">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Telefono</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="uni-nombre" placeholder="Escriba el telefono de la insitucion">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Correo</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="uni-nombre" placeholder="Escriba el correo de la insitucion">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Ubicacion Geografica</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="uni-nombre" placeholder="Latitud/Longitud">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="comment">Direccion Fisica</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba Direccion Fisica"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="comment">Mision</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba mision de la institucion"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="comment">Vision</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba vision de la institucion"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="comment">Objetivos</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba objetivos de la institucion"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="comment">Politicas</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba politicas de la institucion"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group"> 
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!--PERIODOS-->
+                <div id="reg-periodos" class="collapse">
+                    <div  class="page-header">
+                        <h1>Periodos de clases</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Nuevo</button>
+                    </div>
+                       
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cod</th>
+                                <th>Comentario</th>
+                                <th>Anio</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>john@example.com</td>
+                                <td>john@example.com</td>
+                                <td>john@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>john@example.com</td>
+                                <td>john@example.com</td>
+                                <td>john@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>john@example.com</td>
+                                <td>john@example.com</td>
+                                <td>john@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="reg-periodos" class="collapse">
+                    <div  class="page-header">
+                        <h1>Periodo</h1>
+                    </div>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Nombre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="uni-nombre" placeholder="Escriba el nombre de la insitucion">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Telefono</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="uni-nombre" placeholder="Escriba el telefono de la insitucion">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Correo</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="uni-nombre" placeholder="Escriba el correo de la insitucion">
+                            </div>
+                        </div>
+
+                        <div class="form-group"> 
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+    <script>
+        $("#reg-info-gen").click(function () {
+            $("#reg-confi-sis").collapse("show");
+            $("#reg-title").collapse("hide");
+            $("#reg-periodos").collapse("hide");
+        });
+
+        $("#reg-inicio").click(function () {
+            $("#reg-confi-sis").collapse("hide");
+            $("#reg-title").collapse("show");
+            $("#reg-periodos").collapse("hide");
+        });
+        $("#reg-btn-periodos").click(function () {
+            $("#reg-title").collapse("hide");
+            $("#reg-periodos").collapse("show");
+            $("#reg-confi-sis").collapse("hide");
+        });
+    </script>
+</html>
