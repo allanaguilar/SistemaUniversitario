@@ -10,7 +10,7 @@
 <%
 
 //    Connection con = null;
-    Statement st = null;
+//    Statement st = null;
     try {
 
         OracleConn db = new OracleConn();

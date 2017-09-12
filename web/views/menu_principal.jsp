@@ -3,6 +3,11 @@
     Created on : 09-10-2017, 09:42:41 PM
     Author     : aguilar
 --%>
+
+<%@page import = "Dba.OracleConn"%>
+<%@page import = "java.sql.*"%>
+<%@page import = "java.io.*,java.util.*" %>
+
 <%//seguridad del sistema%>
 <%if (session.getAttribute("s_user") == null) {
         request.getRequestDispatcher("index.html").forward(request, response);
@@ -18,7 +23,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-        <title>JSP Page</title>
+        <title>Sistema Universitario | Administracion</title>
     </head>
     <body>
 
@@ -54,15 +59,15 @@
                     <li role="presentation" class="active"><a id="reg-inicio" href="#">Inicio</a></li>
                     <li role="presentation"><a id="reg-info-gen" href="#">Informacion General</a></li>
                     <li role="presentation"><a id="reg-btn-periodos" href="#">Periodos de Clases</a></li>
-                    <li role="presentation"><a href="#">Alumnos</a></li>
-                    <li role="presentation"><a href="#">Maestros</a></li>
-                    <li role="presentation"><a href="#">Carreras</a></li>
-                    <li role="presentation"><a href="#">Clases</a></li>
-                    <li role="presentation"><a href="#">Precios</a></li>
-                    <li role="presentation"><a href="#">Rutas</a></li>
-                    <li role="presentation"><a href="#">Usuarios</a></li>
-                    <li role="presentation"><a href="#">Reportes</a></li>
-                    <li role="presentation"><a href="#">Salir</a></li>
+                    <li role="presentation"><a id="reg-btn-alumnos" href="#">Alumnos</a></li>
+                    <li role="presentation"><a id="reg-btn-maestros" href="#">Maestros</a></li>
+                    <li role="presentation"><a id="reg-btn-admin" href="#">Administradores</a></li>
+                    <li role="presentation"><a id="reg-btn-carreras" href="#">Carreras</a></li>
+                    <li role="presentation"><a id="reg-btn-clases" href="#">Clases</a></li>
+                    <li role="presentation"><a id="reg-btn-precios" href="#">Precios</a></li>
+                    <li role="presentation"><a id="reg-btn-rutas" href="#">Rutas</a></li>
+                    <li role="presentation"><a id="reg-btn-reportes" href="#">Reportes</a></li>
+                    <li role="presentation"><a id="reg-btn-salir" href="#">Salir</a></li>
                 </ul>
             </div>
             <div class="col-md-7 col-md-offset-1 ">
@@ -74,6 +79,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!--CONFIGURACION GENERAL-->
                 <div id="reg-confi-sis" class="collapse">
                     <div  class="page-header">
                         <h1>Informacion general del sistema</h1>
@@ -151,7 +158,7 @@
                         <button type="button" class="btn btn-primary">Cancelar</button>
                         <button type="button" class="btn btn-primary">Nuevo</button>
                     </div>
-                       
+
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -163,30 +170,372 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>john@example.com</td>
-                                <td>john@example.com</td>
-                                <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>john@example.com</td>
-                                <td>john@example.com</td>
-                                <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>john@example.com</td>
-                                <td>john@example.com</td>
-                                <td>john@example.com</td>
-                            </tr>
+
+                            <%
+                            try {
+                                OracleConn db = new OracleConn();
+                                db.conectar();
+                                db.query.execute("SELECT * FROM periodosclases");
+                                ResultSet rs = db.query.getResultSet();
+
+                                while (rs.next()) {%>
+                                    <tr>
+                                        <td><%=rs.getString(1)%></td>
+                                        <td><%=rs.getString(2)%></td>
+                                        <td><%=rs.getString(3)%></td>
+                                        <td><%=rs.getString(4)%></td>
+                                        <td><%=rs.getString(5)%></td>
+                                    </tr>
+                            <% }
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            %>
+
+
+
                         </tbody>
                     </table>
                 </div>
+
+                <!--ALUMNOS-->
+                <div id="reg-alumnos" class="collapse">
+                    <div  class="page-header">
+                        <h1>Alumnos</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Nuevo</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Nombre</th>
+                                <th>Fecha Nac.</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                                
+                            try {
+                                OracleConn db = new OracleConn();
+                                db.conectar();
+                                db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'ALM'");
+                                ResultSet rs = db.query.getResultSet();
+
+                                while (rs.next()) {%>
+                                    <tr>
+                                        <td><%=rs.getString(1)%></td>
+                                        <td><%=rs.getString(2)%></td>
+                                        <td><%=rs.getString(3)%></td>
+                                        <td><%=rs.getString(4)%></td>
+                                        <td><%=rs.getString(5)%></td>
+                                    </tr>
+                            <% }
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }%>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--MAESTROS-->
+                <div id="reg-maestros" class="collapse">
+                    <div  class="page-header">
+                        <h1>Maestros</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Nuevo</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Nombre</th>
+                                <th>Fecha Nac.</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                                
+                            try {
+                                OracleConn db = new OracleConn();
+                                db.conectar();
+                                db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'MAE'");
+                                ResultSet rs = db.query.getResultSet();
+
+                                while (rs.next()) {%>
+                                    <tr>
+                                        <td><%=rs.getString(1)%></td>
+                                        <td><%=rs.getString(2)%></td>
+                                        <td><%=rs.getString(3)%></td>
+                                        <td><%=rs.getString(4)%></td>
+                                        <td><%=rs.getString(5)%></td>
+                                    </tr>
+                            <% }
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--ADMINISTRADORES-->
+                <div id="reg-admin" class="collapse">
+                    <div  class="page-header">
+                        <h1>Administradores</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Nuevo</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Nombre</th>
+                                <th>Fecha Nac.</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                                
+                            try {
+                                OracleConn db = new OracleConn();
+                                db.conectar();
+                                db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'REG'");
+                                ResultSet rs = db.query.getResultSet();
+
+                                while (rs.next()) {%>
+                                    <tr>
+                                        <td><%=rs.getString(1)%></td>
+                                        <td><%=rs.getString(2)%></td>
+                                        <td><%=rs.getString(3)%></td>
+                                        <td><%=rs.getString(4)%></td>
+                                        <td><%=rs.getString(5)%></td>
+                                    </tr>
+                            <% }
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }%>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--CARRERAS-->
+                <div id="reg-carreras" class="collapse">
+                    <div  class="page-header">
+                        <h1>Carreras</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Nuevo</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th>Fecha Fund.</th>
+                                <th>Duracion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                                
+                            try {
+                                OracleConn db = new OracleConn();
+                                db.conectar();
+                                db.query.execute("SELECT * FROM carreras");
+                                ResultSet rs = db.query.getResultSet();
+
+                                while (rs.next()) {%>
+                                    <tr>
+                                        <td><%=rs.getString(1)%></td>
+                                        <td><%=rs.getString(2)%></td>
+                                        <td><%=rs.getString(3)%></td>
+                                        <td><%=rs.getString(4)%></td>
+                                    </tr>
+                            <%  }
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            %>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--CLASES-->
+                <div id="reg-clases" class="collapse">
+                    <div  class="page-header">
+                        <h1>Clases</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Nuevo</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                            try {
+                                OracleConn db = new OracleConn();
+                                db.conectar();
+                                db.query.execute("SELECT * FROM clases");
+                                ResultSet rs = db.query.getResultSet();
+
+                                while (rs.next()) {%>
+                                    <tr>
+                                        <td><%=rs.getString(1)%></td>
+                                        <td><%=rs.getString(3)%></td>
+                                    </tr>
+                            <% }
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }%>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--PRECIOS-->
+                <div id="reg-precios" class="collapse">
+                    <div  class="page-header">
+                        <h1>Precios</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Nuevo</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                                
+                            try {
+                                OracleConn db = new OracleConn();
+                                db.conectar();
+                                db.query.execute("SELECT * FROM servicios");
+                                ResultSet rs = db.query.getResultSet();
+
+                                while (rs.next()) {%>
+                                <tr>
+                                    <td><%=rs.getString(1)%></td>
+                                    <td><%=rs.getString(2)%></td>
+                                    <td><%=rs.getString(3)%></td>
+                                </tr>
+                            <%}
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }%>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--RUTAS-->
+                <div id="reg-rutas" class="collapse">
+                    <div  class="page-header">
+                        <h1>Rutas</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Nuevo</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Descripcion</th>
+                                <th>Origen</th>
+                                <th>Destino</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                                
+                            try {
+                                OracleConn db = new OracleConn();
+                                db.conectar();
+                                db.query.execute("SELECT * FROM rutas");
+                                ResultSet rs = db.query.getResultSet();
+
+                                while (rs.next()) {%>
+
+                                <tr>
+                                    <td><%=rs.getString(1)%></td>
+                                    <td><%=rs.getString(2)%></td>
+                                    <td><%=rs.getString(3)%></td>
+                                    <td><%=rs.getString(4)%></td>
+                                </tr>
+                                <% }
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            %>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--CREAR USUARIO-->
                 <div id="reg-periodos" class="collapse">
                     <div  class="page-header">
                         <h1>Periodo</h1>
@@ -225,20 +574,95 @@
 
     <script>
         $("#reg-info-gen").click(function () {
-            $("#reg-confi-sis").collapse("show");
-            $("#reg-title").collapse("hide");
-            $("#reg-periodos").collapse("hide");
+            ShowView("confi_sis");
         });
-
         $("#reg-inicio").click(function () {
-            $("#reg-confi-sis").collapse("hide");
-            $("#reg-title").collapse("show");
-            $("#reg-periodos").collapse("hide");
+            ShowView("title");
         });
         $("#reg-btn-periodos").click(function () {
-            $("#reg-title").collapse("hide");
-            $("#reg-periodos").collapse("show");
-            $("#reg-confi-sis").collapse("hide");
+            ShowView("periodos");
         });
+        $("#reg-btn-alumnos").click(function () {
+            ShowView("alumnos");
+        });
+        $("#reg-btn-maestros").click(function () {
+            ShowView("maestros");
+        });
+        $("#reg-btn-admin").click(function () {
+            ShowView("admin");
+        });
+        $("#reg-btn-carreras").click(function () {
+            ShowView("carreras");
+        });
+        $("#reg-btn-clases").click(function () {
+            ShowView("clases");
+        });
+        $("#reg-btn-precios").click(function () {
+            ShowView("precios");
+        });
+        $("#reg-btn-rutas").click(function () {
+            ShowView("rutas");
+        });
+
+        function ShowView(view_id) {
+            title = "hide";
+            confi_sis = "hide";
+            periodos = "hide";
+            alumnos = "hide";
+            maestros = "hide";
+            carreras = "hide";
+            clases = "hide";
+            precios = "hide";
+            rutas = "hide";
+            admin = "hide";
+            reportes = "hide";
+            switch (view_id) {
+                case "title":
+                    title = "show";
+                    break;
+                case "confi_sis":
+                    confi_sis = "show";
+                    break;
+                case "periodos":
+                    periodos = "show";
+                    break;
+                case "alumnos":
+                    alumnos = "show";
+                    break;
+                case "maestros":
+                    maestros = "show";
+                    break;
+                case "admin":
+                    admin = "show";
+                    break;
+                case "carreras":
+                    carreras = "show";
+                    break;
+                case "clases":
+                    clases = "show";
+                    break;
+                case "precios":
+                    precios = "show";
+                    break;
+                case "rutas":
+                    rutas = "show";
+                    break;
+                case "reportes":
+                    reportes = "show";
+                    break;
+
+            }
+            $("#reg-title").collapse(title);
+            $("#reg-confi-sis").collapse(confi_sis);
+            $("#reg-periodos").collapse(periodos);
+            $("#reg-alumnos").collapse(alumnos);
+            $("#reg-maestros").collapse(maestros);
+            $("#reg-admin").collapse(admin);
+            $("#reg-carreras").collapse(carreras);
+            $("#reg-clases").collapse(clases);
+            $("#reg-precios").collapse(precios);
+            $("#reg-rutas").collapse(rutas);
+            $("#reg-reportes").collapse(reportes);
+        }
     </script>
 </html>
