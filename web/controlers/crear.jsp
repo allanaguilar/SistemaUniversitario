@@ -17,29 +17,26 @@
         <title>Respuesta</title>
     </head>
     <body>
-        
+
         <%
 //            out.print("id : " + request.getParameter("id"));
-        if (request.getParameter("id").equals("upd-actividad")){
-            try {
-                Dba db = new Dba(application.getRealPath("ExamenPrimerParcial.mdb"));
-                db.conectar();
-                int contador=db.query.executeUpdate("UPDATE tareas_personas "
-                    + "SET duracion='"+request.getParameter("nuevo_valor") + "'"
-                    + "WHERE actividad='"+ request.getParameter("actividad")+ "' AND id_persona='" + request.getParameter("persona") + "' ");
-    //            out.print("LECTURA: " + request.getParameter("actividad") + " - " + request.getParameter("persona"));
-                if(contador>=1){ 
-                    out.print("<div id='respuesta'>Actividad " + request.getParameter("actividad") + " modificada satisfactoriamente</div>");             
+            if (request.getParameter("id").equals("crear-pclass")) {
+                try {
+                    OracleConn db = new OracleConn();
+                    db.conectar();
+//                    db.query.executeUpdate("SELECT usuario_id, contrasena, nombre from usuarios");
+                      db.query.executeUpdate("insert into periodosclases (periodo_id,comentario,anio,f_inicio,f_fin) values('79','Periodo 4','2322','23','32')");
+                                            //insert into periodosclases (periodo_id, comentario, anio) values ('20', 'periodo 2', '2018')
+
+                    ResultSet rs = db.query.getResultSet();
+                    out.print("<div id='respuesta'> " + rs + "</div>");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    out.print(e);
+                    out.print("<div id='respuesta'> " + e + "</div>");
                 }
-                db.commit();
-                db.desconectar();
-            } catch (Exception e) {
-                e.printStackTrace();
-                out.print(e);
-                out.print("<div id='respuesta'> " + e + "</div>");
             }
-        }
-%>
+        %>
     </body>
 
 </html>

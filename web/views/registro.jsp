@@ -698,7 +698,7 @@
             // Stop form from submitting normally
             event.preventDefault();
             $.post("http://localhost:9999/SistemaUniversitario/controlers/crear.jsp", {
-                id: "upd-actividad",
+                id: "crear-pclass",
                 per_id: $("#pclase-code").val(),
                 desc: $("#pclase-name").val(),
                 anio: $("#pclase-anio").val(),
