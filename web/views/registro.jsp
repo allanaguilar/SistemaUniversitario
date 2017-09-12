@@ -26,24 +26,20 @@
         <title>Sistema Universitario | Administracion</title>
     </head>
     <body>
-
+        <!--NAVBAR-->
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Sistema Universitario</a>
                 </div>
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logueado como <span class="login-name"><%=session.getAttribute("s_nombre")%></span> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Modificar Perfil</a></li>
-                                <!--                                <li><a href="#">Another action</a></li>
-                                                                <li><a href="#">Something else here</a></li>-->
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Salir</a></li>
                             </ul>
@@ -52,7 +48,48 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <!--<div class="container">-->
+                            
+        <!--MODALS-->
+        <div class="modal fade" id="modalPeriodoClases" tabindex="-1" role="dialog" aria-labelledby="modalPeriodoClasesLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalPeriodoClasesLabel">Periodo de Clases</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="pclase-code" class="control-label">Cod:</label>
+                                <input type="text" class="form-control" id="pclase-code">
+                            </div>
+                            <div class="form-group">
+                                <label for="pclase-name" class="control-label">Descripcion:</label>
+                                <input type="text" class="form-control" id="pclase-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="pclase-anio" class="control-label">Año:</label>
+                                <input type="number" class="form-control" id="pclase-anio">
+                            </div>
+                            <div class="form-group">
+                                <label for="pclase-frdate" class="control-label">Fecha Inicio:</label>
+                                <input type="date" class="form-control" id="pclase-frdate">
+                            </div>
+                            <div class="form-group">
+                                <label for="pclase-todate" class="control-label">Fecha Fin:</label>
+                                <input type="date" class="form-control" id="pclase-todate">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-save-pclase">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+                            
+        <!--MAIN MENU-->
         <div>
             <div class="col-md-3">
                 <ul class="nav nav-pills nav-stacked">
@@ -155,8 +192,8 @@
                         <h1>Periodos de clases</h1>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Nuevo</button>
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -573,6 +610,7 @@
     </body>
 
     <script>
+        //OPEN REGS
         $("#reg-info-gen").click(function () {
             ShowView("confi_sis");
         });
@@ -604,6 +642,17 @@
             ShowView("rutas");
         });
 
+
+        //MODALS
+        $('#modalPeriodoClases').on('show.bs.modal', function(event) {
+            var modal = $(this)
+            // modal.find('.modal-title').text('New message to ' + recipient)
+            // modal.find('.modal-body input').val(recipient)
+            $("#pclase-code").val("MAT02");
+            $("#pclase-name").val("ALGEGRA");
+        });
+
+        //FUNCTIONS
         function ShowView(view_id) {
             title = "hide";
             confi_sis = "hide";

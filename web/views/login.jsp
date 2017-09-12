@@ -12,7 +12,7 @@
         <h1>Sistema Universitario</h1>
     </center>
     <div class="row">
-    <form class="login col-md-4 col-md-offset-4" action="../controlers/autenticacion.jsp" method="POST">
+    <form class="login col-md-4 col-md-offset-4" action="../controlers/autenticar.jsp" method="POST">
         <div class="form-group">
             <label for="exampleInputEmail1">Usuario</label>
             <input type="text" class="form-control" name="user" placeholder="User ID">
