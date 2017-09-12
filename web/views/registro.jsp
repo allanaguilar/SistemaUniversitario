@@ -687,12 +687,12 @@
             var modal = $(this)
             // modal.find('.modal-title').text('New message to ' + recipient)
             // modal.find('.modal-body input').val(recipient)
-            $("#pclase-code").val("MAT02");
-            $("#pclase-name").val("ALGEGRA");
+//            $("#pclase-code").val("MAT02");
+//            $("#pclase-name").val("ALGEGRA");
         });
 
         $(".btn-save-pclase").click(function () {
-//            $("#modal").collapse("hide");
+            $("#modalPeriodoClases").modal('hide');
 //                    var array = $(this).attr('id');
 //            array = array.split(",");
             // Stop form from submitting normally
