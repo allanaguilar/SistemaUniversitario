@@ -35,7 +35,7 @@
             session.setAttribute("s_nombre", login_name);
             //llamar jsp correspondiete desde linea de comando
             out.print("<script>alert('bienvenido!')</script>");
-            String site = new String("http://localhost:9999/SistemaUniversitario/views/menu_principal.jsp");
+            String site = new String("http://localhost:9999/SistemaUniversitario/views/registro.jsp");
             response.setStatus(response.SC_MOVED_TEMPORARILY);
             response.setHeader("Location", site);
 //            request.getRequestDispatcher("principal.jsp").forward(request, response);
