@@ -48,7 +48,7 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-                            
+
         <!--MODALS-->
         <div class="modal fade" id="modalPeriodoClases" tabindex="-1" role="dialog" aria-labelledby="modalPeriodoClasesLabel">
             <div class="modal-dialog" role="document">
@@ -61,23 +61,23 @@
                         <form>
                             <div class="form-group">
                                 <label for="pclase-code" class="control-label">Cod:</label>
-                                <input type="text" class="form-control" id="pclase-code">
+                                <input type="text" class="form-control" id="pclase-code" name="pclase-code">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-name" class="control-label">Descripcion:</label>
-                                <input type="text" class="form-control" id="pclase-name">
+                                <input type="text" class="form-control" id="pclase-name" name="pclase-name">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-anio" class="control-label">Año:</label>
-                                <input type="number" class="form-control" id="pclase-anio">
+                                <input type="number" class="form-control" id="pclase-anio" name="pclase-anio">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-frdate" class="control-label">Fecha Inicio:</label>
-                                <input type="date" class="form-control" id="pclase-frdate">
+                                <input type="date" class="form-control" id="pclase-frdate" name="pclase-frdate">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-todate" class="control-label">Fecha Fin:</label>
-                                <input type="date" class="form-control" id="pclase-todate">
+                                <input type="date" class="form-control" id="pclase-todate" name="pclase-todate">
                             </div>
                         </form>
                     </div>
@@ -88,7 +88,7 @@
                 </div>
             </div>
         </div>
-                            
+
         <!--MAIN MENU-->
         <div>
             <div class="col-md-3">
@@ -209,25 +209,31 @@
                         <tbody>
 
                             <%
-                            try {
-                                OracleConn db = new OracleConn();
-                                db.conectar();
-                                db.query.execute("SELECT * FROM periodosclases");
-                                ResultSet rs = db.query.getResultSet();
 
-                                while (rs.next()) {%>
-                                    <tr>
-                                        <td><%=rs.getString(1)%></td>
-                                        <td><%=rs.getString(2)%></td>
-                                        <td><%=rs.getString(3)%></td>
-                                        <td><%=rs.getString(4)%></td>
-                                        <td><%=rs.getString(5)%></td>
-                                    </tr>
+                                
+                                    try {
+                                OracleConn db = new OracleConn();
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM periodosclases");
+                                    ResultSet rs = db.query.getResultSet();
+
+                                    while (rs.next()) {%>
+                            <tr>
+                                <td><%=rs.getString(1)%></td>
+                                <td><%=rs.getString(2)%></td>
+                                <td><%=rs.getString(3)%></td>
+                                <td><%=rs.getString(4)%></td>
+                                <td><%=rs.getString(5)%></td>
+                            </tr>
                             <% }
-                                db.desconectar();
-                            }catch (Exception e) {
+                                    db.desconectar();
+                                }
+                                catch (Exception e
+
+                                
+                                    ) {
                                 e.printStackTrace();
-                            }
+                                }
                             %>
 
 
@@ -260,25 +266,29 @@
 
                             <%
                                 
-                            try {
+                                    try {
                                 OracleConn db = new OracleConn();
-                                db.conectar();
-                                db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'ALM'");
-                                ResultSet rs = db.query.getResultSet();
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'ALM'");
+                                    ResultSet rs = db.query.getResultSet();
 
-                                while (rs.next()) {%>
-                                    <tr>
-                                        <td><%=rs.getString(1)%></td>
-                                        <td><%=rs.getString(2)%></td>
-                                        <td><%=rs.getString(3)%></td>
-                                        <td><%=rs.getString(4)%></td>
-                                        <td><%=rs.getString(5)%></td>
-                                    </tr>
+                                    while (rs.next()) {%>
+                            <tr>
+                                <td><%=rs.getString(1)%></td>
+                                <td><%=rs.getString(2)%></td>
+                                <td><%=rs.getString(3)%></td>
+                                <td><%=rs.getString(4)%></td>
+                                <td><%=rs.getString(5)%></td>
+                            </tr>
                             <% }
-                                db.desconectar();
-                            }catch (Exception e) {
+                                    db.desconectar();
+                                }
+                                catch (Exception e
+
+                                
+                                    ) {
                                 e.printStackTrace();
-                            }%>
+                                }%>
 
 
 
@@ -309,26 +319,31 @@
                         <tbody>
 
                             <%
-                                
-                            try {
-                                OracleConn db = new OracleConn();
-                                db.conectar();
-                                db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'MAE'");
-                                ResultSet rs = db.query.getResultSet();
 
-                                while (rs.next()) {%>
-                                    <tr>
-                                        <td><%=rs.getString(1)%></td>
-                                        <td><%=rs.getString(2)%></td>
-                                        <td><%=rs.getString(3)%></td>
-                                        <td><%=rs.getString(4)%></td>
-                                        <td><%=rs.getString(5)%></td>
-                                    </tr>
+                                
+                                    try {
+                                OracleConn db = new OracleConn();
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'MAE'");
+                                    ResultSet rs = db.query.getResultSet();
+
+                                    while (rs.next()) {%>
+                            <tr>
+                                <td><%=rs.getString(1)%></td>
+                                <td><%=rs.getString(2)%></td>
+                                <td><%=rs.getString(3)%></td>
+                                <td><%=rs.getString(4)%></td>
+                                <td><%=rs.getString(5)%></td>
+                            </tr>
                             <% }
-                                db.desconectar();
-                            }catch (Exception e) {
+                                    db.desconectar();
+                                }
+                                catch (Exception e
+
+                                
+                                    ) {
                                 e.printStackTrace();
-                            }
+                                }
                             %>
                         </tbody>
                     </table>
@@ -358,25 +373,29 @@
 
                             <%
                                 
-                            try {
+                                    try {
                                 OracleConn db = new OracleConn();
-                                db.conectar();
-                                db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'REG'");
-                                ResultSet rs = db.query.getResultSet();
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'REG'");
+                                    ResultSet rs = db.query.getResultSet();
 
-                                while (rs.next()) {%>
-                                    <tr>
-                                        <td><%=rs.getString(1)%></td>
-                                        <td><%=rs.getString(2)%></td>
-                                        <td><%=rs.getString(3)%></td>
-                                        <td><%=rs.getString(4)%></td>
-                                        <td><%=rs.getString(5)%></td>
-                                    </tr>
+                                    while (rs.next()) {%>
+                            <tr>
+                                <td><%=rs.getString(1)%></td>
+                                <td><%=rs.getString(2)%></td>
+                                <td><%=rs.getString(3)%></td>
+                                <td><%=rs.getString(4)%></td>
+                                <td><%=rs.getString(5)%></td>
+                            </tr>
                             <% }
-                                db.desconectar();
-                            }catch (Exception e) {
+                                    db.desconectar();
+                                }
+                                catch (Exception e
+
+                                
+                                    ) {
                                 e.printStackTrace();
-                            }%>
+                                }%>
 
 
 
@@ -406,25 +425,30 @@
                         <tbody>
 
                             <%
-                                
-                            try {
-                                OracleConn db = new OracleConn();
-                                db.conectar();
-                                db.query.execute("SELECT * FROM carreras");
-                                ResultSet rs = db.query.getResultSet();
 
-                                while (rs.next()) {%>
-                                    <tr>
-                                        <td><%=rs.getString(1)%></td>
-                                        <td><%=rs.getString(2)%></td>
-                                        <td><%=rs.getString(3)%></td>
-                                        <td><%=rs.getString(4)%></td>
-                                    </tr>
+                                
+                                    try {
+                                OracleConn db = new OracleConn();
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM carreras");
+                                    ResultSet rs = db.query.getResultSet();
+
+                                    while (rs.next()) {%>
+                            <tr>
+                                <td><%=rs.getString(1)%></td>
+                                <td><%=rs.getString(2)%></td>
+                                <td><%=rs.getString(3)%></td>
+                                <td><%=rs.getString(4)%></td>
+                            </tr>
                             <%  }
-                                db.desconectar();
-                            }catch (Exception e) {
+                                    db.desconectar();
+                                }
+                                catch (Exception e
+
+                                
+                                    ) {
                                 e.printStackTrace();
-                            }
+                                }
                             %>
 
 
@@ -453,22 +477,27 @@
                         <tbody>
 
                             <%
-                            try {
+                                
+                                    try {
                                 OracleConn db = new OracleConn();
-                                db.conectar();
-                                db.query.execute("SELECT * FROM clases");
-                                ResultSet rs = db.query.getResultSet();
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM clases");
+                                    ResultSet rs = db.query.getResultSet();
 
-                                while (rs.next()) {%>
-                                    <tr>
-                                        <td><%=rs.getString(1)%></td>
-                                        <td><%=rs.getString(3)%></td>
-                                    </tr>
+                                    while (rs.next()) {%>
+                            <tr>
+                                <td><%=rs.getString(1)%></td>
+                                <td><%=rs.getString(3)%></td>
+                            </tr>
                             <% }
-                                db.desconectar();
-                            }catch (Exception e) {
+                                    db.desconectar();
+                                }
+                                catch (Exception e
+
+                                
+                                    ) {
                                 e.printStackTrace();
-                            }%>
+                                }%>
 
 
 
@@ -497,24 +526,29 @@
                         <tbody>
 
                             <%
-                                
-                            try {
-                                OracleConn db = new OracleConn();
-                                db.conectar();
-                                db.query.execute("SELECT * FROM servicios");
-                                ResultSet rs = db.query.getResultSet();
 
-                                while (rs.next()) {%>
-                                <tr>
-                                    <td><%=rs.getString(1)%></td>
-                                    <td><%=rs.getString(2)%></td>
-                                    <td><%=rs.getString(3)%></td>
-                                </tr>
+                                
+                                    try {
+                                OracleConn db = new OracleConn();
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM servicios");
+                                    ResultSet rs = db.query.getResultSet();
+
+                                    while (rs.next()) {%>
+                            <tr>
+                                <td><%=rs.getString(1)%></td>
+                                <td><%=rs.getString(2)%></td>
+                                <td><%=rs.getString(3)%></td>
+                            </tr>
                             <%}
-                                db.desconectar();
-                            }catch (Exception e) {
+                                    db.desconectar();
+                                }
+                                catch (Exception e
+
+                                
+                                    ) {
                                 e.printStackTrace();
-                            }%>
+                                }%>
 
 
 
@@ -544,26 +578,31 @@
                         <tbody>
 
                             <%
+
                                 
-                            try {
+                                    try {
                                 OracleConn db = new OracleConn();
-                                db.conectar();
-                                db.query.execute("SELECT * FROM rutas");
-                                ResultSet rs = db.query.getResultSet();
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM rutas");
+                                    ResultSet rs = db.query.getResultSet();
 
-                                while (rs.next()) {%>
+                                    while (rs.next()) {%>
 
-                                <tr>
-                                    <td><%=rs.getString(1)%></td>
-                                    <td><%=rs.getString(2)%></td>
-                                    <td><%=rs.getString(3)%></td>
-                                    <td><%=rs.getString(4)%></td>
-                                </tr>
-                                <% }
-                                db.desconectar();
-                            }catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                            <tr>
+                                <td><%=rs.getString(1)%></td>
+                                <td><%=rs.getString(2)%></td>
+                                <td><%=rs.getString(3)%></td>
+                                <td><%=rs.getString(4)%></td>
+                            </tr>
+                            <% }
+                                    db.desconectar();
+                                }
+                                catch (Exception e
+
+                                
+                                    ) {
+                            e.printStackTrace();
+                                }
                             %>
 
 
@@ -644,12 +683,32 @@
 
 
         //MODALS
-        $('#modalPeriodoClases').on('show.bs.modal', function(event) {
+        $('#modalPeriodoClases').on('show.bs.modal', function (event) {
             var modal = $(this)
             // modal.find('.modal-title').text('New message to ' + recipient)
             // modal.find('.modal-body input').val(recipient)
             $("#pclase-code").val("MAT02");
             $("#pclase-name").val("ALGEGRA");
+        });
+
+        $(".btn-save-pclase").click(function () {
+//            $("#modal").collapse("hide");
+//                    var array = $(this).attr('id');
+//            array = array.split(",");
+            // Stop form from submitting normally
+            event.preventDefault();
+            $.post("http://localhost:9999/SistemaUniversitario/controlers/crear.jsp", {
+                id: "upd-actividad",
+                per_id: $("#pclase-code").val(),
+                desc: $("#pclase-name").val(),
+                anio: $("#pclase-anio").val(),
+                frdate: $("#pclase-frdate").val(),
+                todate: $("#pclase-todate").val()
+            }).done(function (data) {
+//                      alert(data);
+                console.log(data);
+            });
+//                    location.reload();
         });
 
         //FUNCTIONS

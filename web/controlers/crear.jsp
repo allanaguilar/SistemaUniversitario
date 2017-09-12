@@ -1,0 +1,46 @@
+<%-- 
+    Document   : guardar
+    Created on : 09-12-2017, 10:13:32 AM
+    Author     : aguilar
+--%>
+
+<%@page import = "Dba.OracleConn"%>
+<%@page import = "java.sql.*"%>
+<%@page import = "java.io.*,java.util.*" %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Respuesta</title>
+    </head>
+    <body>
+        
+        <%
+//            out.print("id : " + request.getParameter("id"));
+        if (request.getParameter("id").equals("upd-actividad")){
+            try {
+                Dba db = new Dba(application.getRealPath("ExamenPrimerParcial.mdb"));
+                db.conectar();
+                int contador=db.query.executeUpdate("UPDATE tareas_personas "
+                    + "SET duracion='"+request.getParameter("nuevo_valor") + "'"
+                    + "WHERE actividad='"+ request.getParameter("actividad")+ "' AND id_persona='" + request.getParameter("persona") + "' ");
+    //            out.print("LECTURA: " + request.getParameter("actividad") + " - " + request.getParameter("persona"));
+                if(contador>=1){ 
+                    out.print("<div id='respuesta'>Actividad " + request.getParameter("actividad") + " modificada satisfactoriamente</div>");             
+                }
+                db.commit();
+                db.desconectar();
+            } catch (Exception e) {
+                e.printStackTrace();
+                out.print(e);
+                out.print("<div id='respuesta'> " + e + "</div>");
+            }
+        }
+%>
+    </body>
+
+</html>
+
