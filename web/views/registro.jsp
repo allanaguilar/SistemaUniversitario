@@ -704,8 +704,14 @@
                 anio: $("#pclase-anio").val(),
                 frdate: $("#pclase-frdate").val(),
                 todate: $("#pclase-todate").val()
-            }).done(function (data) {
-//                      alert(data);
+            }).done(function (data, status) {
+                if (data.indexOf("ok") >= 0) {
+                    alert("saved!");
+                } else {
+                    alert("Ha ocurrido un error al guardar.");
+                }
+
+                        
                 console.log(data);
             });
 //                    location.reload();
