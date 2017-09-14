@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : guardar
     Created on : 09-12-2017, 10:13:32 AM
     Author     : aguilar
@@ -9,28 +9,41 @@
 <%@page import = "java.io.*,java.util.*" %>
 
 <%
-//            out.print("id : " + request.getParameter("id"));
     if (request.getParameter("id").equals("crear-pclass")) {
         try {
             OracleConn db = new OracleConn();
             db.conectar();
-//                    db.query.executeUpdate("SELECT usuario_id, contrasena, nombre from usuarios");
             db.query.executeUpdate("insert into periodosclases (periodo_id,comentario,anio,f_inicio,f_fin) values('"
                     + request.getParameter("per_id") + "','"
                     + request.getParameter("desc") + "','"
                     + request.getParameter("anio") + "','"
                     + request.getParameter("frdate") + "','"
                     + request.getParameter("todate") + "')");
-            //insert into periodosclases (periodo_id, comentario, anio) values ('20', 'periodo 2', '2018')
-
             out.print("ok");
         } catch (Exception e) {
             e.printStackTrace();
             out.print(e);
-//                    out.print(e.printStackTrace());
-//                    out.print("<div id='respuesta'> " + e + "</div>");
         }
     }
+
+    if (request.getParameter("id").equals("crear-usuario")) {
+        try {
+            OracleConn db = new OracleConn();
+            db.conectar();
+            db.query.executeUpdate("insert into usuarios (usuario_id,nombre,fecha_nac,telefono,correo) values('"
+                    + request.getParameter("usuario_id") + "','"
+                    + request.getParameter("nombre") + "','"
+                    + request.getParameter("fecha_nac") + "','"
+                    + request.getParameter("telefono") + "','"
+                    + request.getParameter("correo") + "','"
+                    + request.getParameter("perfil_id_fk") + "','"
+                    + request.getParameter("todate") + "')");
+            out.print("ok");
+        } catch (Exception e) {
+            e.printStackTrace();
+            out.print(e);
+        }
+    }
+
+
 %>
-
-

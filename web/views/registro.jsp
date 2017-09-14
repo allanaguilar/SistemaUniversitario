@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : menu_principal
     Created on : 09-10-2017, 09:42:41 PM
     Author     : aguilar
@@ -49,6 +49,7 @@
             </div><!-- /.container-fluid -->
         </nav>
         <!--MODALS-->
+        <%-- MODAL - CREAR PERIODO --%>
         <div class="modal fade" id="modalPeriodoClases" tabindex="-1" role="dialog" aria-labelledby="modalPeriodoClasesLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -88,6 +89,48 @@
             </div>
         </div>
 
+        <%-- MODAL - CREAR ALUMNO, PROFESOR, ADMINISTRADORES --%>
+        <div class="modal fade" id="modalUsuarios" tabindex="-1" role="dialog" aria-labelledby="modalUsuariosLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalUsuariosLabel">Crear Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="usuario-id" class="control-label">Cuenta:</label>
+                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-name" class="control-label">Nombre:</label>
+                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
+                                <input type="number" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-telefono" class="control-label">Telefono:</label>
+                                <input type="date" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-correo" class="control-label">Correo:</label>
+                                <input type="date" class="form-control" id="usuario-correo" name="usuario-correo">
+                            </div>
+                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!--MESSAGES-->
         <div id="error-message" class="col-md-4 col-md-offset-4 collapse">
@@ -117,7 +160,7 @@
                 </ul>
             </div>
             <div class="col-md-6 col-md-offset-1 ">
-                <div id="reg-title" class="collapse in"> 
+                <div id="reg-title" class="collapse in">
                     <div class="jumbotron">
                         <div class="container">
                             <h1>Area Administrativa</h1>
@@ -187,7 +230,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group"> 
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">Guardar</button>
                             </div>
@@ -219,7 +262,7 @@
 
                             <%
 
-                                
+
                                     try {
                                 OracleConn db = new OracleConn();
                                     db.conectar();
@@ -239,7 +282,7 @@
                                 }
                                 catch (Exception e
 
-                                
+
                                     ) {
                                 e.printStackTrace();
                                 }
@@ -257,8 +300,8 @@
                         <h1>Alumnos</h1>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Nuevo</button>
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="ALM" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -274,7 +317,7 @@
                         <tbody>
 
                             <%
-                                
+
                                     try {
                                 OracleConn db = new OracleConn();
                                     db.conectar();
@@ -294,7 +337,7 @@
                                 }
                                 catch (Exception e
 
-                                
+
                                     ) {
                                 e.printStackTrace();
                                 }%>
@@ -311,8 +354,8 @@
                         <h1>Maestros</h1>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Nuevo</button>
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="MAE" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -329,7 +372,7 @@
 
                             <%
 
-                                
+
                                     try {
                                 OracleConn db = new OracleConn();
                                     db.conectar();
@@ -349,7 +392,7 @@
                                 }
                                 catch (Exception e
 
-                                
+
                                     ) {
                                 e.printStackTrace();
                                 }
@@ -364,8 +407,8 @@
                         <h1>Administradores</h1>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Nuevo</button>
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="REG" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -381,7 +424,7 @@
                         <tbody>
 
                             <%
-                                
+
                                     try {
                                 OracleConn db = new OracleConn();
                                     db.conectar();
@@ -401,7 +444,7 @@
                                 }
                                 catch (Exception e
 
-                                
+
                                     ) {
                                 e.printStackTrace();
                                 }%>
@@ -418,8 +461,8 @@
                         <h1>Carreras</h1>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Nuevo</button>
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -435,7 +478,7 @@
 
                             <%
 
-                                
+
                                     try {
                                 OracleConn db = new OracleConn();
                                     db.conectar();
@@ -454,7 +497,7 @@
                                 }
                                 catch (Exception e
 
-                                
+
                                     ) {
                                 e.printStackTrace();
                                 }
@@ -472,8 +515,8 @@
                         <h1>Clases</h1>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Nuevo</button>
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -486,7 +529,7 @@
                         <tbody>
 
                             <%
-                                
+
                                     try {
                                 OracleConn db = new OracleConn();
                                     db.conectar();
@@ -503,7 +546,7 @@
                                 }
                                 catch (Exception e
 
-                                
+
                                     ) {
                                 e.printStackTrace();
                                 }%>
@@ -520,8 +563,8 @@
                         <h1>Precios</h1>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Nuevo</button>
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -536,7 +579,7 @@
 
                             <%
 
-                                
+
                                     try {
                                 OracleConn db = new OracleConn();
                                     db.conectar();
@@ -554,7 +597,7 @@
                                 }
                                 catch (Exception e
 
-                                
+
                                     ) {
                                 e.printStackTrace();
                                 }%>
@@ -571,8 +614,8 @@
                         <h1>Rutas</h1>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Nuevo</button>
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -588,7 +631,7 @@
 
                             <%
 
-                                
+
                                     try {
                                 OracleConn db = new OracleConn();
                                     db.conectar();
@@ -608,7 +651,7 @@
                                 }
                                 catch (Exception e
 
-                                
+
                                     ) {
                             e.printStackTrace();
                                 }
@@ -645,7 +688,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group"> 
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">Guardar</button>
                             </div>
@@ -700,9 +743,27 @@
 //            $("#pclase-name").val("ALGEGRA");
         });
 
+        $('#modalUsuarios').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var perfil = "";
+
+            switch (button.data('perfil')){
+              case "ALM":
+                perfil = "Alumno";
+                break;
+              case "MAE": perfil = "Profesor";
+                break;
+              case "REG": perfil = "Administrador";
+            }
+
+            modal.find('.modal-title').text(perfil);
+            modal.find('#usuario-perfil').val(button.data('perfil'));
+        });
+
         $(".btn-save-pclase").click(function () {
             $("#modalPeriodoClases").modal('hide');
-//                    var array = $(this).attr('id');
+//            var array = $(this).attr('id');
 //            array = array.split(",");
             // Stop form from submitting normally
             event.preventDefault();
@@ -714,17 +775,15 @@
                 frdate: $("#pclase-frdate").val(),
                 todate: $("#pclase-todate").val()
             }).done(function (data, status) {
-                if (data.indexOf("ok") >= 0) {
-                    $("#error-message").collapse("show");
-                    $(".alert").removeClass("alert-danger").addClass("alert-success");
-                    $("#error-message-text").html("<center>El registro ha sido guardado.</center>");
-                } else {
-//                    alert("Ha ocurrido un error al guardar.");
-                    $("#error-message").collapse("show");
-                    $(".alert").removeClass("alert-success").addClass("alert-danger");
-                    $("#error-message-text").html(data.toString());
-//                    $("#error-message-text").append("<strong>ERROR: </strong>: " + data.toString());
-                }
+                      if (data.indexOf("ok") >= 0) {
+                          $("#error-message").collapse("show");
+                          $(".alert").removeClass("alert-danger").addClass("alert-success");
+                          $("#error-message-text").html("<center>El registro ha sido guardado.</center>");
+                      } else {
+                          $("#error-message").collapse("show");
+                          $(".alert").removeClass("alert-success").addClass("alert-danger");
+                          $("#error-message-text").html(data.toString());
+                      }
 
 
                 console.log(data);
