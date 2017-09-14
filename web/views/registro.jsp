@@ -48,7 +48,6 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-
         <!--MODALS-->
         <div class="modal fade" id="modalPeriodoClases" tabindex="-1" role="dialog" aria-labelledby="modalPeriodoClasesLabel">
             <div class="modal-dialog" role="document">
@@ -89,9 +88,19 @@
             </div>
         </div>
 
+
+        <!--MESSAGES-->
+        <div id="error-message" class="col-md-4 col-md-offset-4 collapse">
+            <div class="alert alert-danger alert-dismissable fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <!--<strong>Error!</strong> This alert box could indicate a dangerous or potentially negative action.-->
+              <a id="error-message-text"></a>
+            </div>
+        </div>
+        <br>
         <!--MAIN MENU-->
-        <div>
-            <div class="col-md-3">
+        <div class="col-md-12">
+            <div class="col-md-3 col-md-offset-1">
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation" class="active"><a id="reg-inicio" href="#">Inicio</a></li>
                     <li role="presentation"><a id="reg-info-gen" href="#">Informacion General</a></li>
@@ -107,7 +116,7 @@
                     <li role="presentation"><a id="reg-btn-salir" href="#">Salir</a></li>
                 </ul>
             </div>
-            <div class="col-md-7 col-md-offset-1 ">
+            <div class="col-md-6 col-md-offset-1 ">
                 <div id="reg-title" class="collapse in"> 
                     <div class="jumbotron">
                         <div class="container">
@@ -706,12 +715,18 @@
                 todate: $("#pclase-todate").val()
             }).done(function (data, status) {
                 if (data.indexOf("ok") >= 0) {
-                    alert("saved!");
+                    $("#error-message").collapse("show");
+                    $(".alert").removeClass("alert-danger").addClass("alert-success");
+                    $("#error-message-text").html("<center>El registro ha sido guardado.</center>");
                 } else {
-                    alert("Ha ocurrido un error al guardar.");
+//                    alert("Ha ocurrido un error al guardar.");
+                    $("#error-message").collapse("show");
+                    $(".alert").removeClass("alert-success").addClass("alert-danger");
+                    $("#error-message-text").html(data.toString());
+//                    $("#error-message-text").append("<strong>ERROR: </strong>: " + data.toString());
                 }
 
-                        
+
                 console.log(data);
             });
 //                    location.reload();
@@ -777,6 +792,7 @@
             $("#reg-precios").collapse(precios);
             $("#reg-rutas").collapse(rutas);
             $("#reg-reportes").collapse(reportes);
+            $("#error-message").collapse("hide");
         }
     </script>
 </html>
