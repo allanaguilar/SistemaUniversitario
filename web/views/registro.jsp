@@ -752,9 +752,11 @@
               case "ALM":
                 perfil = "Alumno";
                 break;
-              case "MAE": perfil = "Profesor";
+              case "MAE":
+                perfil = "Profesor";
                 break;
-              case "REG": perfil = "Administrador";
+              case "REG":
+                perfil = "Administrador";
             }
 
             modal.find('.modal-title').text(perfil);
@@ -774,6 +776,37 @@
                 anio: $("#pclase-anio").val(),
                 frdate: $("#pclase-frdate").val(),
                 todate: $("#pclase-todate").val()
+            }).done(function (data, status) {
+                      if (data.indexOf("ok") >= 0) {
+                          $("#error-message").collapse("show");
+                          $(".alert").removeClass("alert-danger").addClass("alert-success");
+                          $("#error-message-text").html("<center>El registro ha sido guardado.</center>");
+                      } else {
+                          $("#error-message").collapse("show");
+                          $(".alert").removeClass("alert-success").addClass("alert-danger");
+                          $("#error-message-text").html(data.toString());
+                      }
+
+
+                console.log(data);
+            });
+//                    location.reload();
+        });
+
+        $(".btn-save-usuario").click(function () {
+            $("#modalPeriodoClases").modal('hide');
+//            var array = $(this).attr('id');
+//            array = array.split(",");
+            // Stop form from submitting normally
+            event.preventDefault();
+            $.post("http://localhost:9999/SistemaUniversitario/controlers/crear.jsp", {
+                id: "crear-usuario",
+                usuario_id: $("#usuario-id").val(),
+                nombre: $("#usuario-name").val(),
+                fecha_nac: $("#usuario-fnac").val(),
+                telefono: $("#usuario-telefono").val(),
+                correo: $("#usuario-correo").val(),
+                perfil_id_fk: $("#usuario-perfil").val()
             }).done(function (data, status) {
                       if (data.indexOf("ok") >= 0) {
                           $("#error-message").collapse("show");
