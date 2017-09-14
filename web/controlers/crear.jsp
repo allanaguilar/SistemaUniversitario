@@ -30,14 +30,14 @@
         try {
             OracleConn db = new OracleConn();
             db.conectar();
-            db.query.executeUpdate("insert into usuarios (usuario_id,nombre,fecha_nac,telefono,correo) values('"
+            db.query.executeUpdate("insert into usuarios (usuario_id,nombre,fecha_nac,telefono,correo,perfil_id_fk) values('"
                     + request.getParameter("usuario_id") + "','"
                     + request.getParameter("nombre") + "','"
                     + request.getParameter("fecha_nac") + "','"
                     + request.getParameter("telefono") + "','"
                     + request.getParameter("correo") + "','"
-                    + request.getParameter("perfil_id_fk") + "','"
-                    + request.getParameter("todate") + "')");
+                    + request.getParameter("perfil_id_fk")
+                    + "')");
             out.print("ok");
         } catch (Exception e) {
             e.printStackTrace();
