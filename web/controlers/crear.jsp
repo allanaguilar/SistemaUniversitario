@@ -35,8 +35,47 @@
           + request.getParameter("perfil_id_fk")
           + "')");
       }
-      //SI EL INSERT SE HIZO SIN PROBLEMA RETORNO UN OK
-      out.print("ok");
+
+      // CREAR CARRERAS
+      if (request.getParameter("id").equals("crear-carrera")) {
+        db.query.executeUpdate("insert into carreras (carrera_id,comentario,fecha_fundacion,duracion) values('"
+          + request.getParameter("carrera_id") + "','"
+          + request.getParameter("comentario") + "','"
+          + request.getParameter("fecha_fundacion") + "','"
+          + request.getParameter("duracion")
+          + "')");
+      }
+
+      // CREAR CLASES
+      if (request.getParameter("id").equals("crear-clase")) {
+        db.query.executeUpdate("insert into clases (clase_id,carrera_id_fk,comentario) values('"
+          + request.getParameter("clase_id") + "','"
+          + request.getParameter("carrera_id_fk") + "','"
+          + request.getParameter("comentario")
+          + "')");
+      }
+
+      // CREAR PRECIOS
+      if (request.getParameter("id").equals("crear-precio")) {
+        db.query.executeUpdate("insert into servicios (servicio_id,comentario,precio,cantidad) values('"
+          + request.getParameter("servicio_id") + "','"
+          + request.getParameter("comentario") + "','"
+          + request.getParameter("precio") + "','"
+          + request.getParameter("cantidad")
+          + "')");
+      }
+
+      // CREAR RUTAS
+      if (request.getParameter("id").equals("crear-ruta")) {
+        db.query.executeUpdate("insert into rutas (ruta_id,comentario,origen,destino) values('"
+          + request.getParameter("ruta_id") + "','"
+          + request.getParameter("comentario") + "','"
+          + request.getParameter("origen") + "','"
+          + request.getParameter("destino")
+          + "')");
+      }
+
+      out.print("ok"); //SI EL INSERT SE HIZO SIN PROBLEMA RETORNO UN OK
       db.desconectar();
     } catch (Exception e) {
       e.printStackTrace();
