@@ -132,6 +132,173 @@
             </div>
         </div>
 
+        <%-- MODAL - Carrera --%>
+        <div class="modal fade" id="modalCarrera" tabindex="-1" role="dialog" aria-labelledby="modalCarreraLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalCarreraLabel">Crear Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="usuario-id" class="control-label">Cuenta:</label>
+                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-name" class="control-label">Nombre:</label>
+                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
+                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-telefono" class="control-label">Telefono:</label>
+                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-correo" class="control-label">Correo:</label>
+                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
+                            </div>
+                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%-- MODAL - Clase --%>
+        <div class="modal fade" id="modalClase" tabindex="-1" role="dialog" aria-labelledby="modalClaseLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalClaseLabel">Crear Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="usuario-id" class="control-label">Cuenta:</label>
+                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-name" class="control-label">Nombre:</label>
+                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
+                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-telefono" class="control-label">Telefono:</label>
+                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-correo" class="control-label">Correo:</label>
+                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
+                            </div>
+                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%-- MODAL - Precio --%>
+        <div class="modal fade" id="modalPrecio" tabindex="-1" role="dialog" aria-labelledby="modalPrecioLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalPrecioLabel">Crear Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="usuario-id" class="control-label">Cuenta:</label>
+                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-name" class="control-label">Nombre:</label>
+                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
+                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-telefono" class="control-label">Telefono:</label>
+                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-correo" class="control-label">Correo:</label>
+                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
+                            </div>
+                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%-- MODAL - Ruta --%>
+        <div class="modal fade" id="modalRuta" tabindex="-1" role="dialog" aria-labelledby="modalRutaLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalRutaLabel">Crear Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="usuario-id" class="control-label">Cuenta:</label>
+                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-name" class="control-label">Nombre:</label>
+                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
+                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-telefono" class="control-label">Telefono:</label>
+                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario-correo" class="control-label">Correo:</label>
+                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
+                            </div>
+                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--MESSAGES-->
         <div id="error-message" class="col-md-4 col-md-offset-4 collapse">
@@ -432,7 +599,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCarrera">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -476,7 +643,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalClase">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -516,7 +683,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPrecio">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -558,7 +725,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRuta">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -604,6 +771,9 @@
     </body>
 
     <script>
+        // VARS
+        var url = "http://localhost:9999/SistemaUniversitario";
+
         //OPEN REGS
         $("#reg-info-gen").click(function () {
             ShowView("confi_sis");
@@ -641,8 +811,8 @@
             var modal = $(this);
             // modal.find('.modal-title').text('New message to ' + recipient)
             // modal.find('.modal-body input').val(recipient)
-//            $("#pclase-code").val("MAT02");
-//            $("#pclase-name").val("ALGEGRA");
+            // $("#pclase-code").val("MAT02");
+            // $("#pclase-name").val("ALGEGRA");
         });
 
         $('#modalUsuarios').on('show.bs.modal', function (event) {
@@ -667,37 +837,89 @@
 
         $(".btn-save-pclase").click(function () {
             $("#modalPeriodoClases").modal('hide');
-//            var array = $(this).attr('id');
-//            array = array.split(",");
+            // var array = $(this).attr('id');
+            // array = array.split(",");
             // Stop form from submitting normally
             event.preventDefault();
-            $.post("http://localhost:9999/SistemaUniversitario/controlers/crear.jsp", {
-                id: "crear-pclass",
-                per_id: $("#pclase-code").val(),
-                desc: $("#pclase-name").val(),
-                anio: $("#pclase-anio").val(),
-                frdate: $("#pclase-frdate").val(),
-                todate: $("#pclase-todate").val()
+            $.post(url + "/controlers/crear.jsp", {
+                id      : "crear-pclass",
+                per_id  : $("#pclase-code").val(),
+                desc    : $("#pclase-name").val(),
+                anio    : $("#pclase-anio").val(),
+                frdate  : $("#pclase-frdate").val(),
+                todate  : $("#pclase-todate").val()
             }).done(function (data, status) {
                 messageActive(data);
             });
-//                    location.reload();
+            // location.reload();
         });
 
         $(".btn-save-usuario").click(function () {
-            $("#modalUsuarios").modal('hide');
-//            var array = $(this).attr('id');
-//            array = array.split(",");
-            // Stop form from submitting normally
+            $("#modalUsuario").modal('hide');
             event.preventDefault();
-            $.post("http://localhost:9999/SistemaUniversitario/controlers/crear.jsp", {
-                id: "crear-usuario",
-                usuario_id: $("#usuario-id").val(),
-                nombre: $("#usuario-name").val(),
-                fecha_nac: $("#usuario-fnac").val(),
-                telefono: $("#usuario-telefono").val(),
-                correo: $("#usuario-correo").val(),
+            $.post(url + "/controlers/crear.jsp", {
+                id          : "crear-usuario",
+                usuario_id  : $("#usuario-id").val(),
+                nombre      : $("#usuario-name").val(),
+                fecha_nac   : $("#usuario-fnac").val(),
+                telefono    : $("#usuario-telefono").val(),
+                correo      : $("#usuario-correo").val(),
                 perfil_id_fk: $("#usuario-perfil").val()
+            }).done(function (data, status) {
+                messageActive(data);
+            });
+        });
+
+        $(".btn-save-carrera").click(function () {
+            $("#modalCarrera").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/crear.jsp", {
+                id              : "crear-carrera",
+                carrera_id      : $("#carrera-id").val(),
+                comentario      : $("#carrera-comentario").val(),
+                fecha_fundacion : $("#carrera-fecha").val(),
+                duracion        : $("#carrera-duracion").val(),
+            }).done(function (data, status) {
+                messageActive(data);
+            });
+        });
+
+        $(".btn-save-clase").click(function () {
+            $("#modalClase").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/crear.jsp", {
+                id            : "crear-clase",
+                clase_id      : $("#clase-id").val(),
+                carrera_id_fk : $("#clase-carrera").val(),
+                comentario    : $("#clase-comentario").val()
+            }).done(function (data, status) {
+                messageActive(data);
+            });
+        });
+
+        $(".btn-save-precio").click(function () {
+            $("#modalPrecio").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/crear.jsp", {
+                id          : "crear-precio",
+                servicio_id : $("#precio-id").val(),
+                comentario  : $("#precio-comentario").val(),
+                precio      : $("#precio-precio").val(),
+                cantidad    : $("#precio-cantidad").val()
+            }).done(function (data, status) {
+                messageActive(data);
+            });
+        });
+
+        $(".btn-save-ruta").click(function () {
+            $("#modalRuta").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/crear.jsp", {
+                id        : "crear-ruta",
+                ruta_id   : $("#ruta-id").val(),
+                comentario: $("#ruta-comentario").val(),
+                origen    : $("#ruta-origen").val(),
+                destino   : $("#ruta-destino").val()
             }).done(function (data, status) {
                 messageActive(data);
             });
