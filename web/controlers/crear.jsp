@@ -9,6 +9,7 @@
 <%@page import = "java.io.*,java.util.*" %>
 
 <%
+    // CREAR PERIODOS CLASES
     if (request.getParameter("id").equals("crear-pclass")) {
         try {
             OracleConn db = new OracleConn();
@@ -19,6 +20,7 @@
                     + request.getParameter("anio") + "','"
                     + request.getParameter("frdate") + "','"
                     + request.getParameter("todate") + "')");
+            db.desconectar();
             out.print("ok");
         } catch (Exception e) {
             e.printStackTrace();
@@ -26,6 +28,7 @@
         }
     }
 
+    // CREAR ALUMNO, MAESTRO, ADMINISTRADORES
     if (request.getParameter("id").equals("crear-usuario")) {
         try {
             OracleConn db = new OracleConn();
