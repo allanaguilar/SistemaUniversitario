@@ -48,6 +48,7 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+
         <!--MODALS-->
         <%-- MODAL - CREAR PERIODO --%>
         <div class="modal fade" id="modalPeriodoClases" tabindex="-1" role="dialog" aria-labelledby="modalPeriodoClasesLabel">
@@ -260,36 +261,27 @@
                         </thead>
                         <tbody>
 
-                            <%
+                          <%
+                            try {
+                                  OracleConn db = new OracleConn();
+                                  db.conectar();
+                                  db.query.execute("SELECT * FROM periodosclases");
+                                  ResultSet rs = db.query.getResultSet();
 
-
-                                    try {
-                                OracleConn db = new OracleConn();
-                                    db.conectar();
-                                    db.query.execute("SELECT * FROM periodosclases");
-                                    ResultSet rs = db.query.getResultSet();
-
-                                    while (rs.next()) {%>
-                            <tr>
-                                <td><%=rs.getString(1)%></td>
-                                <td><%=rs.getString(2)%></td>
-                                <td><%=rs.getString(3)%></td>
-                                <td><%=rs.getString(4)%></td>
-                                <td><%=rs.getString(5)%></td>
-                            </tr>
-                            <% }
-                                    db.desconectar();
-                                }
-                                catch (Exception e
-
-
-                                    ) {
-                                e.printStackTrace();
-                                }
-                            %>
-
-
-
+                                  while (rs.next()) {%>
+                                    <tr>
+                                        <td><%=rs.getString(1)%></td>
+                                        <td><%=rs.getString(2)%></td>
+                                        <td><%=rs.getString(3)%></td>
+                                        <td><%=rs.getString(4)%></td>
+                                        <td><%=rs.getString(5)%></td>
+                                    </tr>
+                          <% }
+                                  db.desconectar();
+                              }catch (Exception e) {
+                                  e.printStackTrace();
+                              }
+                          %>
                         </tbody>
                     </table>
                 </div>
