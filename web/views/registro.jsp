@@ -318,32 +318,25 @@
 
                             <%
 
-                                    try {
-                                OracleConn db = new OracleConn();
+                               try {
+                                    OracleConn db = new OracleConn();
                                     db.conectar();
                                     db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'ALM'");
                                     ResultSet rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
-                            <tr>
-                                <td><%=rs.getString(1)%></td>
-                                <td><%=rs.getString(2)%></td>
-                                <td><%=rs.getString(3)%></td>
-                                <td><%=rs.getString(4)%></td>
-                                <td><%=rs.getString(5)%></td>
-                            </tr>
+                                      <tr>
+                                          <td><%=rs.getString(1)%></td>
+                                          <td><%=rs.getString(2)%></td>
+                                          <td><%=rs.getString(3)%></td>
+                                          <td><%=rs.getString(4)%></td>
+                                          <td><%=rs.getString(5)%></td>
+                                      </tr>
                             <% }
                                     db.desconectar();
-                                }
-                                catch (Exception e
-
-
-                                    ) {
-                                e.printStackTrace();
+                                }catch (Exception e) {
+                                    e.printStackTrace();
                                 }%>
-
-
-
                         </tbody>
                     </table>
                 </div>
@@ -371,30 +364,24 @@
                         <tbody>
 
                             <%
-
-
-                                    try {
-                                OracleConn db = new OracleConn();
+                                try {
+                                    OracleConn db = new OracleConn();
                                     db.conectar();
                                     db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'MAE'");
                                     ResultSet rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
-                            <tr>
-                                <td><%=rs.getString(1)%></td>
-                                <td><%=rs.getString(2)%></td>
-                                <td><%=rs.getString(3)%></td>
-                                <td><%=rs.getString(4)%></td>
-                                <td><%=rs.getString(5)%></td>
-                            </tr>
+                                      <tr>
+                                          <td><%=rs.getString(1)%></td>
+                                          <td><%=rs.getString(2)%></td>
+                                          <td><%=rs.getString(3)%></td>
+                                          <td><%=rs.getString(4)%></td>
+                                          <td><%=rs.getString(5)%></td>
+                                      </tr>
                             <% }
                                     db.desconectar();
-                                }
-                                catch (Exception e
-
-
-                                    ) {
-                                e.printStackTrace();
+                                }catch (Exception e) {
+                                    e.printStackTrace();
                                 }
                             %>
                         </tbody>
@@ -422,35 +409,26 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <%
-
-                                    try {
-                                OracleConn db = new OracleConn();
+                                try {
+                                    OracleConn db = new OracleConn();
                                     db.conectar();
                                     db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'REG'");
                                     ResultSet rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
-                            <tr>
-                                <td><%=rs.getString(1)%></td>
-                                <td><%=rs.getString(2)%></td>
-                                <td><%=rs.getString(3)%></td>
-                                <td><%=rs.getString(4)%></td>
-                                <td><%=rs.getString(5)%></td>
-                            </tr>
+                                      <tr>
+                                          <td><%=rs.getString(1)%></td>
+                                          <td><%=rs.getString(2)%></td>
+                                          <td><%=rs.getString(3)%></td>
+                                          <td><%=rs.getString(4)%></td>
+                                          <td><%=rs.getString(5)%></td>
+                                      </tr>
                             <% }
                                     db.desconectar();
-                                }
-                                catch (Exception e
-
-
-                                    ) {
-                                e.printStackTrace();
+                                }catch (Exception e) {
+                                    e.printStackTrace();
                                 }%>
-
-
-
                         </tbody>
                     </table>
                 </div>
@@ -475,36 +453,26 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <%
-
-
-                                    try {
-                                OracleConn db = new OracleConn();
+                                try {
+                                    OracleConn db = new OracleConn();
                                     db.conectar();
                                     db.query.execute("SELECT * FROM carreras");
                                     ResultSet rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
-                            <tr>
-                                <td><%=rs.getString(1)%></td>
-                                <td><%=rs.getString(2)%></td>
-                                <td><%=rs.getString(3)%></td>
-                                <td><%=rs.getString(4)%></td>
-                            </tr>
+                                    <tr>
+                                        <td><%=rs.getString(1)%></td>
+                                        <td><%=rs.getString(2)%></td>
+                                        <td><%=rs.getString(3)%></td>
+                                        <td><%=rs.getString(4)%></td>
+                                    </tr>
                             <%  }
                                     db.desconectar();
-                                }
-                                catch (Exception e
-
-
-                                    ) {
-                                e.printStackTrace();
+                                }catch (Exception e) {
+                                    e.printStackTrace();
                                 }
                             %>
-
-
-
                         </tbody>
                     </table>
                 </div>
@@ -527,32 +495,24 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <%
-
-                                    try {
-                                OracleConn db = new OracleConn();
+                                try {
+                                    OracleConn db = new OracleConn();
                                     db.conectar();
                                     db.query.execute("SELECT * FROM clases");
                                     ResultSet rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
-                            <tr>
-                                <td><%=rs.getString(1)%></td>
-                                <td><%=rs.getString(3)%></td>
-                            </tr>
+                                      <tr>
+                                          <td><%=rs.getString(1)%></td>
+                                          <td><%=rs.getString(3)%></td>
+                                      </tr>
                             <% }
                                     db.desconectar();
                                 }
-                                catch (Exception e
-
-
-                                    ) {
-                                e.printStackTrace();
+                                catch (Exception e) {
+                                    e.printStackTrace();
                                 }%>
-
-
-
                         </tbody>
                     </table>
                 </div>
@@ -576,34 +536,25 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <%
-
-
-                                    try {
-                                OracleConn db = new OracleConn();
+                                try {
+                                    OracleConn db = new OracleConn();
                                     db.conectar();
                                     db.query.execute("SELECT * FROM servicios");
                                     ResultSet rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
-                            <tr>
-                                <td><%=rs.getString(1)%></td>
-                                <td><%=rs.getString(2)%></td>
-                                <td><%=rs.getString(3)%></td>
-                            </tr>
+                                        <tr>
+                                            <td><%=rs.getString(1)%></td>
+                                            <td><%=rs.getString(2)%></td>
+                                            <td><%=rs.getString(3)%></td>
+                                        </tr>
                             <%}
                                     db.desconectar();
                                 }
-                                catch (Exception e
-
-
-                                    ) {
-                                e.printStackTrace();
+                                catch (Exception e) {
+                                    e.printStackTrace();
                                 }%>
-
-
-
                         </tbody>
                     </table>
                 </div>
