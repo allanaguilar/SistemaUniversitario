@@ -109,15 +109,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
-                                <input type="number" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
                             </div>
                             <div class="form-group">
                                 <label for="usuario-telefono" class="control-label">Telefono:</label>
-                                <input type="date" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
                             </div>
                             <div class="form-group">
                                 <label for="usuario-correo" class="control-label">Correo:</label>
-                                <input type="date" class="form-control" id="usuario-correo" name="usuario-correo">
+                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
                             </div>
                             <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
 
@@ -630,70 +630,30 @@
                         <tbody>
 
                             <%
-
-
-                                    try {
-                                OracleConn db = new OracleConn();
+                              try {
+                                    OracleConn db = new OracleConn();
                                     db.conectar();
                                     db.query.execute("SELECT * FROM rutas");
                                     ResultSet rs = db.query.getResultSet();
 
-                                    while (rs.next()) {%>
-
-                            <tr>
-                                <td><%=rs.getString(1)%></td>
-                                <td><%=rs.getString(2)%></td>
-                                <td><%=rs.getString(3)%></td>
-                                <td><%=rs.getString(4)%></td>
-                            </tr>
+                                    while (rs.next()) {
+                            %>
+                                      <tr>
+                                          <td><%=rs.getString(1)%></td>
+                                          <td><%=rs.getString(2)%></td>
+                                          <td><%=rs.getString(3)%></td>
+                                          <td><%=rs.getString(4)%></td>
+                                      </tr>
                             <% }
                                     db.desconectar();
                                 }
-                                catch (Exception e
-
-
-                                    ) {
-                            e.printStackTrace();
+                                catch (Exception e) {
+                                    e.printStackTrace();
                                 }
                             %>
 
-
-
                         </tbody>
                     </table>
-                </div>
-
-                <!--CREAR USUARIO-->
-                <div id="reg-periodos" class="collapse">
-                    <div  class="page-header">
-                        <h1>Periodo</h1>
-                    </div>
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Nombre</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="uni-nombre" placeholder="Escriba el nombre de la insitucion">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Telefono</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="uni-nombre" placeholder="Escriba el telefono de la insitucion">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Correo</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="uni-nombre" placeholder="Escriba el correo de la insitucion">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Guardar</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -733,10 +693,9 @@
             ShowView("rutas");
         });
 
-
         //MODALS
         $('#modalPeriodoClases').on('show.bs.modal', function (event) {
-            var modal = $(this)
+            var modal = $(this);
             // modal.find('.modal-title').text('New message to ' + recipient)
             // modal.find('.modal-body input').val(recipient)
 //            $("#pclase-code").val("MAT02");
@@ -760,7 +719,7 @@
             }
 
             modal.find('.modal-title').text(perfil);
-            modal.find('#usuario-perfil').val(button.data('perfil'));
+            modal.find('#usuario-perfil').val(button.data('perfil')); //ASIGNA VALOR AL CAMPO PERFIL
         });
 
         $(".btn-save-pclase").click(function () {
@@ -777,24 +736,13 @@
                 frdate: $("#pclase-frdate").val(),
                 todate: $("#pclase-todate").val()
             }).done(function (data, status) {
-                      if (data.indexOf("ok") >= 0) {
-                          $("#error-message").collapse("show");
-                          $(".alert").removeClass("alert-danger").addClass("alert-success");
-                          $("#error-message-text").html("<center>El registro ha sido guardado.</center>");
-                      } else {
-                          $("#error-message").collapse("show");
-                          $(".alert").removeClass("alert-success").addClass("alert-danger");
-                          $("#error-message-text").html(data.toString());
-                      }
-
-
-                console.log(data);
+                messageActive(data);
             });
 //                    location.reload();
         });
 
         $(".btn-save-usuario").click(function () {
-            $("#modalPeriodoClases").modal('hide');
+            $("#modalUsuarios").modal('hide');
 //            var array = $(this).attr('id');
 //            array = array.split(",");
             // Stop form from submitting normally
@@ -808,23 +756,24 @@
                 correo: $("#usuario-correo").val(),
                 perfil_id_fk: $("#usuario-perfil").val()
             }).done(function (data, status) {
-                      if (data.indexOf("ok") >= 0) {
-                          $("#error-message").collapse("show");
-                          $(".alert").removeClass("alert-danger").addClass("alert-success");
-                          $("#error-message-text").html("<center>El registro ha sido guardado.</center>");
-                      } else {
-                          $("#error-message").collapse("show");
-                          $(".alert").removeClass("alert-success").addClass("alert-danger");
-                          $("#error-message-text").html(data.toString());
-                      }
-
-
-                console.log(data);
+                messageActive(data);
             });
-//                    location.reload();
         });
 
         //FUNCTIONS
+        function messageActive(data){
+          if (data.indexOf("ok") >= 0) {
+              $("#error-message").collapse("show");
+              $(".alert").removeClass("alert-danger").addClass("alert-success");
+              $("#error-message-text").html("<center>El registro ha sido guardado.</center>");
+          } else {
+              $("#error-message").collapse("show");
+              $(".alert").removeClass("alert-success").addClass("alert-danger");
+              $("#error-message-text").html(data.toString());
+          }
+          console.log(data);
+        }
+
         function ShowView(view_id) {
             title = "hide";
             confi_sis = "hide";
