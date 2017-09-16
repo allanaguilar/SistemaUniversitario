@@ -175,32 +175,22 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modalClaseLabel">Crear Usuario</h4>
+                        <h4 class="modal-title" id="modalClaseLabel">Crear Clase</h4>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="usuario-id" class="control-label">Cuenta:</label>
-                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                                <label for="clase-id" class="control-label">Codigo:</label>
+                                <input type="text" class="form-control" id="clase-id" name="clase-id">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-name" class="control-label">Nombre:</label>
-                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                                <label for="clase-comentario" class="control-label">Nombre:</label>
+                                <input type="text" class="form-control" id="clase-comentario" name="clase-comentario">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
-                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                                <label for="clase-carrera" class="control-label">Carrera:</label>
+                                <input type="text" class="form-control" id="clase-carrera" name="clase-carrera">
                             </div>
-                            <div class="form-group">
-                                <label for="usuario-telefono" class="control-label">Telefono:</label>
-                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
-                            </div>
-                            <div class="form-group">
-                                <label for="usuario-correo" class="control-label">Correo:</label>
-                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
-                            </div>
-                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
-
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -222,27 +212,21 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="usuario-id" class="control-label">Cuenta:</label>
-                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                                <label for="precio-id" class="control-label">Codigo:</label>
+                                <input type="text" class="form-control" id="precio-id" name="precio-id">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-name" class="control-label">Nombre:</label>
-                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                                <label for="precio-comentario" class="control-label">Descripcion:</label>
+                                <input type="text" class="form-control" id="precio-comentario" name="precio-comentario">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
-                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                                <label for="precio-precio" class="control-label">Precio:</label>
+                                <input type="number" class="form-control" id="precio-precio" name="precio-precio">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-telefono" class="control-label">Telefono:</label>
-                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                                <label for="precio-cantidad" class="control-label">Cantidad:</label>
+                                <input type="number" class="form-control" id="precio-cantidad" name="precio-cantidad">
                             </div>
-                            <div class="form-group">
-                                <label for="usuario-correo" class="control-label">Correo:</label>
-                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
-                            </div>
-                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
-
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -264,27 +248,21 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="usuario-id" class="control-label">Cuenta:</label>
-                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                                <label for="ruta-id" class="control-label">Codigo:</label>
+                                <input type="text" class="form-control" id="ruta-id" name="ruta-id">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-name" class="control-label">Nombre:</label>
-                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                                <label for="ruta-comentario" class="control-label">Descripcion:</label>
+                                <input type="text" class="form-control" id="ruta-comentario" name="ruta-comentario">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
-                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                                <label for="ruta-origen" class="control-label">Origen:</label>
+                                <input type="text" class="form-control" id="ruta-origen" name="ruta-origen">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-telefono" class="control-label">Telefono:</label>
-                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                                <label for="ruta-destino" class="control-label">Destino:</label>
+                                <input type="text" class="form-control" id="ruta-destino" name="ruta-destino">
                             </div>
-                            <div class="form-group">
-                                <label for="usuario-correo" class="control-label">Correo:</label>
-                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
-                            </div>
-                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
-
                         </form>
                     </div>
                     <div class="modal-footer">
