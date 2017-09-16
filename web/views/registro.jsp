@@ -23,6 +23,8 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+        <!-- <script src="../statics/js/script.js" type="text/javascript"></script> -->
+        <!-- <link href="statics/css/style.css" rel="stylesheet" type="text/css" /> -->
         <title>Sistema Universitario | Administracion</title>
     </head>
     <body>
@@ -397,6 +399,7 @@
                                 <th>Anio</th>
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Fin</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -415,6 +418,10 @@
                                         <td><%=rs.getString(3)%></td>
                                         <td><%=rs.getString(4)%></td>
                                         <td><%=rs.getString(5)%></td>
+                                        <td>
+                                          <a id="<%=rs.getString(1)%>" class="btn-editar-pclase" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <a id="<%=rs.getString(1)%>" class="btn-borrar-pclase" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                        </td>
                                     </tr>
                           <% }
                                   db.desconectar();
@@ -898,6 +905,9 @@
             });
         });
 
+        // $(".btn-editar-pclase").click(function ()){
+        //
+        // }
         //FUNCTIONS
         function messageActive(data){
           if (data.indexOf("ok") >= 0) {
