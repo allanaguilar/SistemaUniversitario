@@ -67,36 +67,28 @@
                         <h4 class="modal-title" id="modalPeriodoClasesLabel">Periodo de Clases</h4>
                     </div>
                     <div class="modal-body">
-                        <%
-
-                              db.conectar();
-                              db.query.execute("SELECT * FROM periodosclases WHERE periodo_id='" + 1 + "'");
-                              //db.query.execute("SELECT * FROM periodosclases WHERE periodo_id='" + request.getParameter("id") + "'");
-                              rs = db.query.getResultSet();
-                              rs.next();
-
-                        %>
                         <form>
                             <div class="form-group">
                                 <label for="pclase-code" class="control-label">Cod:</label>
-                                <input type="text" class="form-control" id="pclase-code" name="pclase-code" value="<%=rs.getString(1)%>">
+                                <input type="text" class="form-control" id="pclase-code" name="pclase-code" value="">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-name" class="control-label">Descripcion:</label>
-                                <input type="text" class="form-control" id="pclase-name" name="pclase-name" value="<%=rs.getString(2)%>">
+                                <input type="text" class="form-control" id="pclase-name" name="pclase-name" value="">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-anio" class="control-label">Año:</label>
-                                <input type="number" class="form-control" id="pclase-anio" name="pclase-anio" value="<%=rs.getString(3)%>">
+                                <input type="number" class="form-control" id="pclase-anio" name="pclase-anio" value="">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-frdate" class="control-label">Fecha Inicio:</label>
-                                <input type="date" class="form-control" id="pclase-frdate" name="pclase-frdate" value="<%=rs.getString(4)%>">
+                                <input type="date" class="form-control" id="pclase-frdate" name="pclase-frdate" value="">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-todate" class="control-label">Fecha Fin:</label>
-                                <input type="date" class="form-control" id="pclase-todate" name="pclase-todate" value="<%=rs.getString(5)%>">
+                                <input type="date" class="form-control" id="pclase-todate" name="pclase-todate" value="">
                             </div>
+                            <input type="text" class="form-control" id="id" name="pclase-todate" value="">
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -434,10 +426,15 @@
                                         <td><%=rs.getString(4)%></td>
                                         <td><%=rs.getString(5)%></td>
                                         <td>
-                                          <a id="<%=rs.getString(1)%>" class="btn-editar-pclase" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <a id="<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>"
+                                            class="btn-editar-pclase" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <!-- <a id="<%=rs.getString(1)%>" class="btn-editar-pclase" href="registro.jsp?id=<%=rs.getString(1)%>&id2="><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> -->
                                           <a id="<%=rs.getString(1)%>" class="btn-borrar-pclase" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                         </td>
+                                        <td><a href="registro.jsp?id=<%=rs.getString(1)%>&id2=">modificar</a></td>
                                     </tr>
+
+
                           <% }
                                   db.desconectar();
                               }catch (Exception e) {
@@ -768,6 +765,7 @@
     <script>
         // VARS
         var url = "http://localhost:9999/SistemaUniversitario";
+        var reg_id = "";
 
         //OPEN REGS
         $("#reg-info-gen").click(function () {
@@ -802,14 +800,6 @@
         });
 
         //MODALS
-        $('#modalPeriodoClases').on('show.bs.modal', function (event) {
-            var modal = $(this);
-            // modal.find('.modal-title').text('New message to ' + recipient)
-            // modal.find('.modal-body input').val(recipient)
-            // $("#pclase-code").val("MAT02");
-            // $("#pclase-name").val("ALGEGRA");
-        });
-
         $('#modalUsuarios').on('show.bs.modal', function (event) {
             var modal = $(this);
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -921,12 +911,26 @@
         });
 
         $(".btn-editar-pclase").click(function (){
+          // ShowView("periodos");
+          // location.reload();
           $("#modalPeriodoClases").modal('show');
+          event.preventDefault();
+          reg_id = $(this).attr('id');
+          $("#pclase-code").val(reg_id);
           $.post(url + "/views/registro.jsp", {
               id: $(this).attr('id')
           }).done(function (data, status) {
               // messageActive(data);
           });
+
+        });
+
+        $('#modalPeriodoClases').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            // modal.find('.modal-title').text('New message to ' + recipient)
+            // modal.find('.modal-body input').val(recipient)
+            // $("#pclase-code").val(reg_id);
+            // $("#pclase-name").val("ALGEGRA");
         });
         //FUNCTIONS
         function messageActive(data){
