@@ -68,10 +68,13 @@
                     </div>
                     <div class="modal-body">
                         <%
-                            db.conectar();
-                            db.query.execute("SELECT * FROM periodosclases WHERE periodo_id='46'");
-                            rs = db.query.getResultSet();
-                            rs.next();
+
+                              db.conectar();
+                              db.query.execute("SELECT * FROM periodosclases WHERE periodo_id='" + 1 + "'");
+                              //db.query.execute("SELECT * FROM periodosclases WHERE periodo_id='" + request.getParameter("id") + "'");
+                              rs = db.query.getResultSet();
+                              rs.next();
+
                         %>
                         <form>
                             <div class="form-group">
@@ -917,9 +920,14 @@
             });
         });
 
-        // $(".btn-editar-pclase").click(function ()){
-        //
-        // }
+        $(".btn-editar-pclase").click(function (){
+          $("#modalPeriodoClases").modal('show');
+          $.post(url + "/views/registro.jsp", {
+              id: $(this).attr('id')
+          }).done(function (data, status) {
+              // messageActive(data);
+          });
+        });
         //FUNCTIONS
         function messageActive(data){
           if (data.indexOf("ok") >= 0) {
