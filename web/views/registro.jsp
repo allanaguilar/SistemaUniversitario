@@ -50,7 +50,7 @@
         </nav>
 
         <!--MODALS-->
-        <%-- MODAL - CREAR PERIODO --%>
+        <!-- MODAL - CREAR PERIODO -->
         <div class="modal fade" id="modalPeriodoClases" tabindex="-1" role="dialog" aria-labelledby="modalPeriodoClasesLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <%-- MODAL - CREAR ALUMNO, PROFESOR, ADMINISTRADORES --%>
+        <!-- MODAL - CREAR ALUMNO, PROFESOR, ADMINISTRADORES -->
         <div class="modal fade" id="modalUsuarios" tabindex="-1" role="dialog" aria-labelledby="modalUsuariosLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -132,49 +132,44 @@
             </div>
         </div>
 
-        <%-- MODAL - Carrera --%>
+        <!-- MODAL - Carrera -->
         <div class="modal fade" id="modalCarrera" tabindex="-1" role="dialog" aria-labelledby="modalCarreraLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modalCarreraLabel">Crear Usuario</h4>
+                        <h4 class="modal-title" id="modalCarreraLabel">Crear Carrera</h4>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="usuario-id" class="control-label">Cuenta:</label>
-                                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                                <label for="carrera-id" class="control-label">Cod. Carrera:</label>
+                                <input type="text" class="form-control" id="carrera-id" name="carrera-id">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-name" class="control-label">Nombre:</label>
-                                <input type="text" class="form-control" id="usuario-name" name="usuario-name">
+                                <label for="carrera-comentario" class="control-label">Descricion:</label>
+                                <input type="text" class="form-control" id="carrera-comentario" name="carrera-comentario">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-fnac" class="control-label">Fecha Nac:</label>
-                                <input type="date" class="form-control" id="usuario-fnac" name="usuario-fnac">
+                                <label for="carrera-fecha" class="control-label">Fecha Fundacion:</label>
+                                <input type="date" class="form-control" id="carrera-fecha" name="carrera-fecha">
                             </div>
                             <div class="form-group">
-                                <label for="usuario-telefono" class="control-label">Telefono:</label>
-                                <input type="text" class="form-control" id="usuario-telefono" name="usuario-telefono">
+                                <label for="carrera-duracion" class="control-label">Duracion (Años):</label>
+                                <input type="number" class="form-control" id="carrera-duracion" name="carrera-duracion">
                             </div>
-                            <div class="form-group">
-                                <label for="usuario-correo" class="control-label">Correo:</label>
-                                <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
-                            </div>
-                            <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
 
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                        <button type="button" class="btn btn-primary btn-save-carrera">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <%-- MODAL - Clase --%>
+        <!-- MODAL - Clase -->
         <div class="modal fade" id="modalClase" tabindex="-1" role="dialog" aria-labelledby="modalClaseLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -210,13 +205,13 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                        <button type="button" class="btn btn-primary btn-save-clase">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <%-- MODAL - Precio --%>
+        <!-- MODAL - Precio -->
         <div class="modal fade" id="modalPrecio" tabindex="-1" role="dialog" aria-labelledby="modalPrecioLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -252,13 +247,13 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                        <button type="button" class="btn btn-primary btn-save-precio">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <%-- MODAL - Ruta --%>
+        <!-- MODAL - Ruta -->
         <div class="modal fade" id="modalRuta" tabindex="-1" role="dialog" aria-labelledby="modalRutaLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -294,7 +289,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary btn-save-usuario">Guardar</button>
+                        <button type="button" class="btn btn-primary btn-save-ruta">Guardar</button>
                     </div>
                 </div>
             </div>
