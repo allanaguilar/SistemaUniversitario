@@ -9,9 +9,15 @@
 <%@page import = "java.io.*,java.util.*" %>
 
 <%//seguridad del sistema%>
-<%if (session.getAttribute("s_user") == null) {
+<%
+    if (session.getAttribute("s_user") == null) {
         request.getRequestDispatcher("index.html").forward(request, response);
     }
+%>
+
+<%
+    OracleConn db = new OracleConn();
+    ResultSet rs;
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -61,26 +67,32 @@
                         <h4 class="modal-title" id="modalPeriodoClasesLabel">Periodo de Clases</h4>
                     </div>
                     <div class="modal-body">
+                        <%
+                            db.conectar();
+                            db.query.execute("SELECT * FROM periodosclases WHERE periodo_id='46'");
+                            rs = db.query.getResultSet();
+                            rs.next();
+                        %>
                         <form>
                             <div class="form-group">
                                 <label for="pclase-code" class="control-label">Cod:</label>
-                                <input type="text" class="form-control" id="pclase-code" name="pclase-code">
+                                <input type="text" class="form-control" id="pclase-code" name="pclase-code" value="<%=rs.getString(1)%>">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-name" class="control-label">Descripcion:</label>
-                                <input type="text" class="form-control" id="pclase-name" name="pclase-name">
+                                <input type="text" class="form-control" id="pclase-name" name="pclase-name" value="<%=rs.getString(2)%>">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-anio" class="control-label">Año:</label>
-                                <input type="number" class="form-control" id="pclase-anio" name="pclase-anio">
+                                <input type="number" class="form-control" id="pclase-anio" name="pclase-anio" value="<%=rs.getString(3)%>">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-frdate" class="control-label">Fecha Inicio:</label>
-                                <input type="date" class="form-control" id="pclase-frdate" name="pclase-frdate">
+                                <input type="date" class="form-control" id="pclase-frdate" name="pclase-frdate" value="<%=rs.getString(4)%>">
                             </div>
                             <div class="form-group">
                                 <label for="pclase-todate" class="control-label">Fecha Fin:</label>
-                                <input type="date" class="form-control" id="pclase-todate" name="pclase-todate">
+                                <input type="date" class="form-control" id="pclase-todate" name="pclase-todate" value="<%=rs.getString(5)%>">
                             </div>
                         </form>
                     </div>
@@ -406,10 +418,10 @@
 
                           <%
                             try {
-                                  OracleConn db = new OracleConn();
+
                                   db.conectar();
                                   db.query.execute("SELECT * FROM periodosclases");
-                                  ResultSet rs = db.query.getResultSet();
+                                  rs = db.query.getResultSet();
 
                                   while (rs.next()) {%>
                                     <tr>
@@ -458,10 +470,10 @@
                             <%
 
                                try {
-                                    OracleConn db = new OracleConn();
+
                                     db.conectar();
                                     db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'ALM'");
-                                    ResultSet rs = db.query.getResultSet();
+                                    rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
                                       <tr>
@@ -504,10 +516,10 @@
 
                             <%
                                 try {
-                                    OracleConn db = new OracleConn();
+
                                     db.conectar();
                                     db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'MAE'");
-                                    ResultSet rs = db.query.getResultSet();
+                                    rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
                                       <tr>
@@ -550,10 +562,10 @@
                         <tbody>
                             <%
                                 try {
-                                    OracleConn db = new OracleConn();
+
                                     db.conectar();
                                     db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'REG'");
-                                    ResultSet rs = db.query.getResultSet();
+                                    rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
                                       <tr>
@@ -594,10 +606,10 @@
                         <tbody>
                             <%
                                 try {
-                                    OracleConn db = new OracleConn();
+
                                     db.conectar();
                                     db.query.execute("SELECT * FROM carreras");
-                                    ResultSet rs = db.query.getResultSet();
+                                    rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
                                     <tr>
@@ -636,10 +648,10 @@
                         <tbody>
                             <%
                                 try {
-                                    OracleConn db = new OracleConn();
+
                                     db.conectar();
                                     db.query.execute("SELECT * FROM clases");
-                                    ResultSet rs = db.query.getResultSet();
+                                    rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
                                       <tr>
@@ -677,10 +689,10 @@
                         <tbody>
                             <%
                                 try {
-                                    OracleConn db = new OracleConn();
+
                                     db.conectar();
                                     db.query.execute("SELECT * FROM servicios");
-                                    ResultSet rs = db.query.getResultSet();
+                                    rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
                                         <tr>
@@ -721,10 +733,10 @@
 
                             <%
                               try {
-                                    OracleConn db = new OracleConn();
+
                                     db.conectar();
                                     db.query.execute("SELECT * FROM rutas");
-                                    ResultSet rs = db.query.getResultSet();
+                                    rs = db.query.getResultSet();
 
                                     while (rs.next()) {
                             %>
