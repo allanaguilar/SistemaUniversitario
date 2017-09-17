@@ -936,61 +936,51 @@
 
         // DELETE ACTIONS
         $(".btn-delete-pclase").click(function () {
-            event.preventDefault();
-            $.post(url + "/controlers/delete.jsp", {
-                id        : "borrar-pclase",
-                reg_id    : $(this).attr('id')
-            }).done(function (data, status) {
-                messageActive(data, "Registro Borrado");
-            });
+          if (confirm("Borrar Registro?")) {
+            deleteRegister("rrar-pclase");
+          }
+
         });
         $(".btn-delete-usuario").click(function () {
-            event.preventDefault();
-            $.post(url + "/controlers/delete.jsp", {
-                id        : "borrar-usuario",
-                reg_id    : $(this).attr('id')
-            }).done(function (data, status) {
-                messageActive(data, "Registro Borrado");
-            });
+          if (confirm("Borrar Registro?")) {
+            deleteRegister("borrar-usuario");
+          }
+
         });
         $(".btn-delete-carrera").click(function () {
-            event.preventDefault();
-            $.post(url + "/controlers/delete.jsp", {
-                id        : "borrar-carrera",
-                reg_id    : $(this).attr('id')
-            }).done(function (data, status) {
-                messageActive(data, "Registro Borrado");
-            });
+          if (confirm("Borrar Registro?")) {
+            deleteRegister("borrar-carrera");
+          }
+
         });
         $(".btn-delete-clase").click(function () {
-            event.preventDefault();
-            $.post(url + "/controlers/delete.jsp", {
-                id        : "borrar-clase",
-                reg_id    : $(this).attr('id')
-            }).done(function (data, status) {
-                messageActive(data, "Registro Borrado");
-            });
+          if (confirm("Borrar Registro?")) {
+            deleteRegister("borrar-clase");
+          }
+
         });
         $(".btn-delete-precio").click(function () {
-            event.preventDefault();
-            $.post(url + "/controlers/delete.jsp", {
-                id        : "borrar-precio",
-                reg_id    : $(this).attr('id')
-            }).done(function (data, status) {
-                messageActive(data, "Registro Borrado");
-            });
+          if (confirm("Borrar Registro?")) {
+            deleteRegister("borrar-precio");
+          }
+
         });
         $(".btn-delete-ruta").click(function () {
-            event.preventDefault();
-            $.post(url + "/controlers/delete.jsp", {
-                id        : "borrar-ruta",
-                reg_id    : $(this).attr('id')
-            }).done(function (data, status) {
-                messageActive(data, "Registro Borrado");
-            });
+          if (confirm("Borrar Registro?")) {
+            deleteRegister("borrar-ruta");
+          }
+
         });
 
         //FUNCTIONS
+        function deleteRegister(id) {
+          $.post(url + "/controlers/delete.jsp", {
+              id        : id,
+              reg_id    : $(this).attr('id')
+          }).done(function (data, status) {
+              messageActive(data, "Registro Borrado");
+          });
+        }
         function messageActive(data,messagestr){
           if (data.indexOf("ok") >= 0) {
               $("#error-message").collapse("show");
