@@ -937,46 +937,46 @@
         // DELETE ACTIONS
         $(".btn-delete-pclase").click(function () {
           if (confirm("Borrar Registro?")) {
-            deleteRegister("rrar-pclase");
+            deleteRegister("borrar-pclase", $(this).attr('id'));
           }
 
         });
         $(".btn-delete-usuario").click(function () {
           if (confirm("Borrar Registro?")) {
-            deleteRegister("borrar-usuario");
+            deleteRegister("borrar-usuario", $(this).attr('id'));
           }
 
         });
         $(".btn-delete-carrera").click(function () {
           if (confirm("Borrar Registro?")) {
-            deleteRegister("borrar-carrera");
+            deleteRegister("borrar-carrera", $(this).attr('id'));
           }
 
         });
         $(".btn-delete-clase").click(function () {
           if (confirm("Borrar Registro?")) {
-            deleteRegister("borrar-clase");
+            deleteRegister("borrar-clase", $(this).attr('id'));
           }
 
         });
         $(".btn-delete-precio").click(function () {
           if (confirm("Borrar Registro?")) {
-            deleteRegister("borrar-precio");
+            deleteRegister("borrar-precio", $(this).attr('id'));
           }
 
         });
         $(".btn-delete-ruta").click(function () {
           if (confirm("Borrar Registro?")) {
-            deleteRegister("borrar-ruta");
+            deleteRegister("borrar-ruta", $(this).attr('id'));
           }
 
         });
 
         //FUNCTIONS
-        function deleteRegister(id) {
+        function deleteRegister(id, reg_id) {
           $.post(url + "/controlers/delete.jsp", {
               id        : id,
-              reg_id    : $(this).attr('id')
+              reg_id    : reg_id
           }).done(function (data, status) {
               messageActive(data, "Registro Borrado");
           });
