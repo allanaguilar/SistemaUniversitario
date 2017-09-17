@@ -428,7 +428,6 @@
                                           <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
                                              class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                                           <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
-                                          <!-- <a id="<%=rs.getString(1)%>" class="btn-borrar-pclase" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> -->
                                         </td>
                                     </tr>
 
@@ -461,6 +460,7 @@
                                 <th>Fecha Nac.</th>
                                 <th>Telefono</th>
                                 <th>Correo</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -480,6 +480,11 @@
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -508,6 +513,7 @@
                                 <th>Fecha Nac.</th>
                                 <th>Telefono</th>
                                 <th>Correo</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -526,6 +532,11 @@
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -555,6 +566,7 @@
                                 <th>Fecha Nac.</th>
                                 <th>Telefono</th>
                                 <th>Correo</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -572,6 +584,11 @@
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -599,6 +616,7 @@
                                 <th>Nombre</th>
                                 <th>Fecha Fund.</th>
                                 <th>Duracion</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -615,6 +633,11 @@
                                         <td><%=rs.getString(2)%></td>
                                         <td><%=rs.getString(3)%></td>
                                         <td><%=rs.getString(4)%></td>
+                                        <td>
+                                          <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                             class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                        </td>
                                     </tr>
                             <%  }
                                     db.desconectar();
@@ -641,6 +664,7 @@
                             <tr>
                                 <th>Codigo</th>
                                 <th>Nombre</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -655,6 +679,11 @@
                                       <tr>
                                           <td><%=rs.getString(1)%></td>
                                           <td><%=rs.getString(3)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -682,6 +711,7 @@
                                 <th>Codigo</th>
                                 <th>Descripcion</th>
                                 <th>Precio</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -697,6 +727,11 @@
                                             <td><%=rs.getString(1)%></td>
                                             <td><%=rs.getString(2)%></td>
                                             <td><%=rs.getString(3)%></td>
+                                            <td>
+                                              <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                                 class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                              <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                            </td>
                                         </tr>
                             <%}
                                     db.desconectar();
@@ -725,6 +760,7 @@
                                 <th>Descripcion</th>
                                 <th>Origen</th>
                                 <th>Destino</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -743,6 +779,11 @@
                                           <td><%=rs.getString(2)%></td>
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
