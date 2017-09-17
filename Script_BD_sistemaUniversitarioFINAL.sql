@@ -74,6 +74,14 @@ CREATE TABLE notas_alumnos
 	nota_final VARCHAR2(100)
 );
 
+CREATE TABLE secciones
+(
+	seccion_id VARCHAR2(10) NOT NULL
+	clase_id_fk VARCHAR2(10) NOT NULL,
+	maestro_id_fk VARCHAR2(100) NOT NULL,
+	comentario VARCHAR2(100)
+);
+
 CREATE TABLE reclamos
 (
 	reclamo_id VARCHAR2(10) PRIMARY KEY,
@@ -85,12 +93,15 @@ CREATE TABLE reclamos
 -- RELACIONES DE TABLAS
 
 
-ALTER TABLE usuarios ADD CONSTRAVARCHAR2(20) us_perfil_id_fk foreign key (perfil_id_fk) references perfiles (perfil_id);
+ALTER TABLE usuarios ADD CONSTRAINT us_perfil_id_fk foreign key (perfil_id_fk) references perfiles (perfil_id);
 
-ALTER TABLE clases ADD CONSTRAVARCHAR2(20) cla_carrera_id_fk foreign key (carrera_id_fk) references carreras (carrera_id);
+ALTER TABLE clases ADD CONSTRAINT cla_carrera_id_fk foreign key (carrera_id_fk) references carreras (carrera_id);
 
-ALTER TABLE ponderacion_clases ADD CONSTRAVARCHAR2(20) pon_clase_id_fk foreign key (clase_id_fk) references clases (clase_id);
-ALTER TABLE ponderacion_clases ADD CONSTRAVARCHAR2(20) pon_maestro_id_fk foreign key (maestro_id_fk) references usuarios (usuario_id);
+ALTER TABLE ponderacion_clases ADD CONSTRAINT pon_clase_id_fk foreign key (clase_id_fk) references clases (clase_id);
+ALTER TABLE ponderacion_clases ADD CONSTRAINT pon_maestro_id_fk foreign key (maestro_id_fk) references usuarios (usuario_id);
 
-ALTER TABLE notas_alumnos ADD CONSTRAVARCHAR2(20) no_clase_id_fk foreign key (clase_id_fk) references clases (clase_id);
-ALTER TABLE notas_alumnos ADD CONSTRAVARCHAR2(20) no_alumno_id_fk foreign key (alumno_id_fk) references usuarios (usuario_id);
+ALTER TABLE notas_alumnos ADD CONSTRAINT no_clase_id_fk foreign key (clase_id_fk) references clases (clase_id);
+ALTER TABLE notas_alumnos ADD CONSTRAINT no_alumno_id_fk foreign key (alumno_id_fk) references usuarios (usuario_id);
+
+ALTER TABLE secciones ADD CONSTRAINT sec_clase_id_fk foreign key (clase_id_fk) references clases (clase_id);
+ALTER TABLE secciones ADD CONSTRAINT sec_maestro_id_fk foreign key (maestro_id_fk) references usuarios (usuario_id);
