@@ -13,6 +13,7 @@
       OracleConn db = new OracleConn();
       db.conectar();
       ResultSet rs;
+      String sql;
 
       // CREAR/ACTUALIZAR PERIODOS CLASES
       if (request.getParameter("id").equals("crear-pclass")) {
@@ -67,7 +68,7 @@
           db.query.executeUpdate("UPDATE carreras SET"
             + " comentario      = '" + request.getParameter("comentario") + "',"
             + " fecha_fundacion = '" + request.getParameter("fecha_fundacion") + "',"
-            + " duracion        = '" + request.getParameter("duracion") + "',"
+            + " duracion        = '" + request.getParameter("duracion") + "'"
             + " WHERE carrera_id = '" + request.getParameter("carrera_id") + "'");
         }else {
           db.query.executeUpdate("insert into carreras (carrera_id,comentario,fecha_fundacion,duracion) values('"
@@ -84,10 +85,12 @@
         db.query.execute("SELECT clase_id FROM clases WHERE clase_id='" + request.getParameter("clase_id") + "'");
         rs = db.query.getResultSet();
         if (rs.next()) {
-          db.query.executeUpdate("UPDATE clases SET"
-            + " carrera_id_fk = '" + request.getParameter("carrera_id_fk ") + "',"
-            + " comentario    = '" + request.getParameter("comentario") + "',"
-            + " WHERE clase_id = '" + request.getParameter("clase_id") + "'");
+          sql = "UPDATE clases SET"
+            + " carrera_id_fk = '" + request.getParameter("carrera_id_fk") + "',"
+            + " comentario    = '" + request.getParameter("comentario") + "'"
+            + " WHERE clase_id = '" + request.getParameter("clase_id") + "'";
+            out.print("  " + sql);
+          db.query.executeUpdate(sql);
         }else {
           db.query.executeUpdate("insert into clases (clase_id,carrera_id_fk,comentario) values('"
             + request.getParameter("clase_id") + "','"
@@ -105,7 +108,7 @@
           db.query.executeUpdate("UPDATE servicios SET"
             + " comentario  = '" + request.getParameter("comentario ") + "',"
             + " precio      = '" + request.getParameter("precio") + "',"
-            + " cantidad    = '" + request.getParameter("cantidad") + "',"
+            + " cantidad    = '" + request.getParameter("cantidad") + "'"
             + " WHERE servicio_id = '" + request.getParameter("servicio_id") + "'");
         }else {
           db.query.executeUpdate("insert into servicios (servicio_id,comentario,precio,cantidad) values('"
@@ -125,7 +128,7 @@
           db.query.executeUpdate("UPDATE rutas SET"
             + " comentario  = '" + request.getParameter("comentario ") + "',"
             + " origen      = '" + request.getParameter("origen") + "',"
-            + " destino     = '" + request.getParameter("destino") + "',"
+            + " destino     = '" + request.getParameter("destino") + "'"
             + " WHERE ruta_id = '" + request.getParameter("ruta_id") + "'");
         }else {
           db.query.executeUpdate("insert into rutas (ruta_id,comentario,origen,destino) values('"
