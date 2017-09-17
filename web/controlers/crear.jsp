@@ -12,16 +12,36 @@
     try {
       OracleConn db = new OracleConn();
       db.conectar();
+      ResultSet rs;
 
       // CREAR PERIODOS CLASES
       if (request.getParameter("id").equals("crear-pclass")) {
-        db.query.executeUpdate("insert into periodosclases (periodo_id,comentario,anio,f_inicio,f_fin) values('"
-          + request.getParameter("per_id") + "','"
-          + request.getParameter("desc") + "','"
-          + request.getParameter("anio") + "','"
-          + request.getParameter("frdate") + "','"
-          + request.getParameter("todate")
-          + "')");
+
+        db.query.execute("SELECT periodo_id FROM periodosclases WHERE periodo_id='" + request.getParameter("per_id") + "'");
+        rs = db.query.getResultSet();
+
+        if (rs.next()) {
+          db.query.executeUpdate("UPDATE periodosclases SET"
+            + " comentario  = '" + request.getParameter("desc") + "',"
+            + " anio        = '" + request.getParameter("anio") + "',"
+            + " f_inicio    = '" + request.getParameter("frdate") + "',"
+            + " f_fin       = '" + request.getParameter("todate") + "'"
+            + " WHERE periodo_id = '" + request.getParameter("per_id") + "'");
+        }else {
+          db.query.executeUpdate("insert into periodosclases (periodo_id,comentario,anio,f_inicio,f_fin) values('"
+            + request.getParameter("per_id") + "','"
+            + request.getParameter("desc") + "','"
+            + request.getParameter("anio") + "','"
+            + request.getParameter("frdate") + "','"
+            + request.getParameter("todate")
+            + "')");
+        }
+
+        // out.print("result: " + rs.next());
+
+        // UPDATE periodosclases SET comentario = 'tercer', anio = '2019', f_inicio = '123', f_fin = '321' WHERE periodo_id = ''
+
+
       }
 
       // CREAR ALUMNO, MAESTRO, ADMINISTRADORES

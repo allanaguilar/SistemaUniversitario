@@ -427,11 +427,8 @@
                                         <td>
                                           <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id=""
                                             class="btn-editar-pclase" data-toggle="modal" data-accion="editar" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                          <!-- <a id="<%=rs.getString(1)%>" class="btn-editar-pclase" href="registro.jsp?id=<%=rs.getString(1)%>&id2="><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> -->
                                           <a id="<%=rs.getString(1)%>" class="btn-borrar-pclase" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
-                                          <!-- <button type="button" id="<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" class="btn btn-primary btn-editar-pclase" data-toggle="modal" data-accion="editar" data-target="#modalPeriodoClases">Crear</button> -->
                                         </td>
-                                        <td><a href="registro.jsp?id=<%=rs.getString(1)%>&id2=">modificar</a></td>
                                     </tr>
 
 
