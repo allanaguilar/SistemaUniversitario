@@ -106,7 +106,7 @@
         rs = db.query.getResultSet();
         if (rs.next()) {
           db.query.executeUpdate("UPDATE servicios SET"
-            + " comentario  = '" + request.getParameter("comentario ") + "',"
+            + " comentario  = '" + request.getParameter("comentario") + "',"
             + " precio      = '" + request.getParameter("precio") + "',"
             + " cantidad    = '" + request.getParameter("cantidad") + "'"
             + " WHERE servicio_id = '" + request.getParameter("servicio_id") + "'");
@@ -126,7 +126,7 @@
         rs = db.query.getResultSet();
         if (rs.next()) {
           db.query.executeUpdate("UPDATE rutas SET"
-            + " comentario  = '" + request.getParameter("comentario ") + "',"
+            + " comentario  = '" + request.getParameter("comentario") + "',"
             + " origen      = '" + request.getParameter("origen") + "',"
             + " destino     = '" + request.getParameter("destino") + "'"
             + " WHERE ruta_id = '" + request.getParameter("ruta_id") + "'");

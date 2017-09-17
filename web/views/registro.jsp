@@ -704,7 +704,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPrecio">Crear</button>
+                        <button type="button" class="btn btn-primary" data-accion="crear" data-toggle="modal" data-target="#modalPrecio">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -949,6 +949,27 @@
             modal.find("#clase-id").val(array[1]);
             modal.find("#clase-comentario").val(array[3]);
             modal.find("#clase-carrera").val(array[2]);
+        });
+
+        $('#modalPrecio').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var accionName = "";
+            var title = "Precio";
+
+            array = button.data('accion');
+            array = array.split(",");
+            switch (array[0]){
+              case "crear":
+                accionName = "Crear - ";
+                break;
+              case "editar":
+                accionName = "Editar - ";
+            }
+            modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#precio-id").val(array[1]);
+            modal.find("#precio-comentario").val(array[2]);
+            modal.find("#precio-precio").val(array[3]);
         });
 
         // SAVE & UPDATE ACTIONS
