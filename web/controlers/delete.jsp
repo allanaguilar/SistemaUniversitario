@@ -16,6 +16,26 @@
       int rowAfected = db.query.executeUpdate("DELETE FROM periodosclases WHERE periodo_id='" + request.getParameter("reg_id") + "'");
     }
 
+    if (request.getParameter("id").equals("borrar-usuario")) {
+      int rowAfected = db.query.executeUpdate("DELETE FROM usuarios WHERE usuario_id='" + request.getParameter("reg_id") + "'");
+    }
+
+    if (request.getParameter("id").equals("borrar-carrera")) {
+      int rowAfected = db.query.executeUpdate("DELETE FROM carreras WHERE carrera_id='" + request.getParameter("reg_id") + "'");
+    }
+
+    if (request.getParameter("id").equals("borrar-clase")) {
+      int rowAfected = db.query.executeUpdate("DELETE FROM clases WHERE clase_id='" + request.getParameter("reg_id") + "'");
+    }
+
+    if (request.getParameter("id").equals("borrar-precio")) {
+      int rowAfected = db.query.executeUpdate("DELETE FROM servicios WHERE servicio_id='" + request.getParameter("reg_id") + "'");
+    }
+
+    if (request.getParameter("id").equals("borrar-ruta")) {
+      int rowAfected = db.query.executeUpdate("DELETE FROM rutas WHERE ruta_id='" + request.getParameter("reg_id") + "'");
+    }
+
     out.print("ok"); //SI EL INSERT SE HIZO SIN PROBLEMA RETORNO UN OK
     db.desconectar();
   } catch (Exception e) {
