@@ -425,9 +425,11 @@
                                         <td><%=rs.getString(4)%></td>
                                         <td><%=rs.getString(5)%></td>
                                         <td>
-                                          <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id=""
-                                            class="btn-editar-pclase" data-toggle="modal" data-accion="editar" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                          <a id="<%=rs.getString(1)%>" class="btn-borrar-pclase" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                            class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <a type="button" data-accion="borrar,<%= rs.getString(1) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
+                                            class="btn-borrar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          <!-- <a id="<%=rs.getString(1)%>" class="btn-borrar-pclase" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> -->
                                         </td>
                                     </tr>
 
@@ -797,6 +799,8 @@
         });
 
         //MODALS
+
+        // CONTEXTS VIEWS (CONTEXTUALIZAR LOS MODALES, PARA SABER SI ES UN MODAL PARA CREAR, ACTUALIZAR, PERFIL USUARIO)
         $('#modalUsuarios').on('show.bs.modal', function (event) {
             var modal = $(this);
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -840,6 +844,7 @@
             modal.find("#pclase-todate").val(array[5]);
         });
 
+        // SAVE & UPDATE ACTIONS
         $(".btn-save-pclase").click(function () {
             $("#modalPeriodoClases").modal('hide');
             // var array = $(this).attr('id');
@@ -854,7 +859,7 @@
                 frdate  : $("#pclase-frdate").val(),
                 todate  : $("#pclase-todate").val()
             }).done(function (data, status) {
-                messageActive(data);
+                messageActive(data,"Registro guardado.");
             });
             // location.reload();
         });
@@ -871,7 +876,7 @@
                 correo      : $("#usuario-correo").val(),
                 perfil_id_fk: $("#usuario-perfil").val()
             }).done(function (data, status) {
-                messageActive(data);
+                messageActive(data,"Registro guardado.");
             });
         });
 
@@ -885,7 +890,7 @@
                 fecha_fundacion : $("#carrera-fecha").val(),
                 duracion        : $("#carrera-duracion").val(),
             }).done(function (data, status) {
-                messageActive(data);
+                messageActive(data,"Registro guardado.");
             });
         });
 
@@ -898,7 +903,7 @@
                 carrera_id_fk : $("#clase-carrera").val(),
                 comentario    : $("#clase-comentario").val()
             }).done(function (data, status) {
-                messageActive(data);
+                messageActive(data,"Registro guardado.");
             });
         });
 
@@ -912,7 +917,7 @@
                 precio      : $("#precio-precio").val(),
                 cantidad    : $("#precio-cantidad").val()
             }).done(function (data, status) {
-                messageActive(data);
+                messageActive(data,"Registro guardado.");
             });
         });
 
@@ -926,16 +931,28 @@
                 origen    : $("#ruta-origen").val(),
                 destino   : $("#ruta-destino").val()
             }).done(function (data, status) {
+                messageActive(data,"Registro guardado.");
+            });
+        });
+
+        // DELETE ACTIONS
+        $(".btn-borrar-pclase").click(function () {
+            $("#modalRuta").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/delete.jsp", {
+                id        : "borrar-pclase",
+                reg_id    : $(this).attr('id')
+            }).done(function (data, status) {
                 messageActive(data);
             });
         });
 
         //FUNCTIONS
-        function messageActive(data){
+        function messageActive(data,messagestr){
           if (data.indexOf("ok") >= 0) {
               $("#error-message").collapse("show");
               $(".alert").removeClass("alert-danger").addClass("alert-success");
-              $("#error-message-text").html("<center>El registro ha sido guardado.</center>");
+              $("#error-message-text").html("<center>" + messagestr + "</center>");
           } else {
               $("#error-message").collapse("show");
               $(".alert").removeClass("alert-success").addClass("alert-danger");
