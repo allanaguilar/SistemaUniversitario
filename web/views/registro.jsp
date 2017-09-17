@@ -835,15 +835,12 @@
               case "editar":
                 accionName = "Editar - ";
             }
-
-            modal.find('.modal-title').text(accionName + title);
-            $("#pclase-code").val(array[1]);
-            $("#pclase-name").val(array[2]);
-            $("#pclase-anio").val(array[3]);
-            $("#pclase-frdate").val(array[4]);
-            $("#pclase-todate").val(array[5]);
-            // modal.find('#usuario-perfil').val(button.data('accion')); //ASIGNA VALOR AL CAMPO PERFIL
-
+            modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#pclase-code").val(array[1]);
+            modal.find("#pclase-name").val(array[2]);
+            modal.find("#pclase-anio").val(array[3]);
+            modal.find("#pclase-frdate").val(array[4]);
+            modal.find("#pclase-todate").val(array[5]);
         });
 
         $(".btn-save-pclase").click(function () {
@@ -935,25 +932,6 @@
                 messageActive(data);
             });
         });
-
-        // $(".btn-editar-pclase").click(function (){
-        //   // ShowView("periodos");
-        //   // location.reload();
-        //   // $("#modalPeriodoClases").modal('show');
-        //   // event.preventDefault();
-        //   var modal = $("#modalPeriodoClases");
-        //   var button = $(event.relatedTarget) // Button that triggered the modal
-        //   alert(button.data('accion'));
-        //
-        //   array = $(this).attr('id');
-        //   array = array.split(",");
-        //   $("#pclase-code").val(array[0]);
-        //   $("#pclase-name").val(array[1]);
-        //   $("#pclase-anio").val(array[2]);
-        //   $("#pclase-frdate").val(array[3]);
-        //   $("#pclase-todate").val(array[4]);
-        //
-        // });
 
         //FUNCTIONS
         function messageActive(data){
