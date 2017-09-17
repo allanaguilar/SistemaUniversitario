@@ -846,7 +846,7 @@
             // array = array.split(",");
             // Stop form from submitting normally
             event.preventDefault();
-            $.post(url + "/controlers/crear.jsp", {
+            $.post(url + "/controlers/save_update.jsp", {
                 id      : "crear-pclass",
                 per_id  : $("#pclase-code").val(),
                 desc    : $("#pclase-name").val(),
@@ -860,9 +860,9 @@
         });
 
         $(".btn-save-usuario").click(function () {
-            $("#modalUsuario").modal('hide');
+            $("#modalUsuarios").modal('hide');
             event.preventDefault();
-            $.post(url + "/controlers/crear.jsp", {
+            $.post(url + "/controlers/save_update.jsp", {
                 id          : "crear-usuario",
                 usuario_id  : $("#usuario-id").val(),
                 nombre      : $("#usuario-name").val(),
@@ -878,7 +878,7 @@
         $(".btn-save-carrera").click(function () {
             $("#modalCarrera").modal('hide');
             event.preventDefault();
-            $.post(url + "/controlers/crear.jsp", {
+            $.post(url + "/controlers/save_update.jsp", {
                 id              : "crear-carrera",
                 carrera_id      : $("#carrera-id").val(),
                 comentario      : $("#carrera-comentario").val(),
@@ -892,7 +892,7 @@
         $(".btn-save-clase").click(function () {
             $("#modalClase").modal('hide');
             event.preventDefault();
-            $.post(url + "/controlers/crear.jsp", {
+            $.post(url + "/controlers/save_update.jsp", {
                 id            : "crear-clase",
                 clase_id      : $("#clase-id").val(),
                 carrera_id_fk : $("#clase-carrera").val(),
@@ -905,7 +905,7 @@
         $(".btn-save-precio").click(function () {
             $("#modalPrecio").modal('hide');
             event.preventDefault();
-            $.post(url + "/controlers/crear.jsp", {
+            $.post(url + "/controlers/save_update.jsp", {
                 id          : "crear-precio",
                 servicio_id : $("#precio-id").val(),
                 comentario  : $("#precio-comentario").val(),
@@ -919,7 +919,7 @@
         $(".btn-save-ruta").click(function () {
             $("#modalRuta").modal('hide');
             event.preventDefault();
-            $.post(url + "/controlers/crear.jsp", {
+            $.post(url + "/controlers/save_update.jsp", {
                 id        : "crear-ruta",
                 ruta_id   : $("#ruta-id").val(),
                 comentario: $("#ruta-comentario").val(),
