@@ -449,7 +449,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="ALM" data-target="#modalUsuarios">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear,ALM" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -481,9 +481,9 @@
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
                                           <td>
-                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                            <a type="button" data-accion="editar,<%=  rs.getString(6) + ',' +  rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalUsuarios" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-usuario" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-usuario" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                           </td>
                                       </tr>
                             <% }
@@ -502,7 +502,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="MAE" data-target="#modalUsuarios">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear,MAE" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -533,9 +533,9 @@
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
                                           <td>
-                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                            <a type="button" data-accion="editar,<%= rs.getString(6) + ',' +  rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalUsuarios" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-usuario" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-usuario" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                           </td>
                                       </tr>
                             <% }
@@ -555,7 +555,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="REG" data-target="#modalUsuarios">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear,REG" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -585,9 +585,9 @@
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
                                           <td>
-                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                            <a type="button" data-accion="editar,<%= rs.getString(6) + ',' + rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalUsuarios" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-usuario" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-usuario" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                           </td>
                                       </tr>
                             <% }
@@ -634,9 +634,9 @@
                                         <td><%=rs.getString(3)%></td>
                                         <td><%=rs.getString(4)%></td>
                                         <td>
-                                          <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                             class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                          <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4) %>" data-target="#modalCarrera" id="<%= rs.getString(1) %>"
+                                             class="btn-editar-carrera" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <a class="btn-delete-carrera" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                         </td>
                                     </tr>
                             <%  }
@@ -682,9 +682,9 @@
                                           <td><%=rs.getString(2)%></td>
                                           <td><%=rs.getString(3)%></td>
                                           <td>
-                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) %>" data-target="#modalClase" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-clase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-clase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                           </td>
                                       </tr>
                             <% }
@@ -730,9 +730,9 @@
                                             <td><%=rs.getString(2)%></td>
                                             <td><%=rs.getString(3)%></td>
                                             <td>
-                                              <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                                 class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                              <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                              <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) %>" data-target="#modalPrecio" id="<%= rs.getString(1) %>"
+                                                 class="btn-editar-precio" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                              <a class="btn-delete-precio" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                             </td>
                                         </tr>
                             <%}
@@ -782,9 +782,9 @@
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
                                           <td>
-                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                               class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                            <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) %>" data-target="#modalRuta" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-ruta" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-ruta" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                           </td>
                                       </tr>
                             <% }
@@ -842,13 +842,21 @@
 
         //MODALS
 
+        // OPEN WINDOW FOR EDIT REG
         // CONTEXTS VIEWS (CONTEXTUALIZAR LOS MODALES, PARA SABER SI ES UN MODAL PARA CREAR, ACTUALIZAR, PERFIL USUARIO)
         $('#modalUsuarios').on('show.bs.modal', function (event) {
             var modal = $(this);
             var button = $(event.relatedTarget) // Button that triggered the modal
             var perfil = "";
+            var accionName = "";
+            var perfilid = "";
 
-            switch (button.data('perfil')){
+            array = button.data('accion');
+            array = array.split(",");
+            perfilid = array[1];
+            // alert("alerta: " + perfilid);
+
+            switch (perfilid){
               case "ALM":
                 perfil = "Alumno";
                 break;
@@ -859,8 +867,21 @@
                 perfil = "Administrador";
             }
 
-            modal.find('.modal-title').text(perfil);
+            if (array[1] == "editar") {
+              accionName = "Editar - ";
+            }else {
+              accionName = "Crear - ";
+            }
+
+            modal.find('.modal-title').text(accionName + perfil);
             modal.find('#usuario-perfil').val(button.data('perfil')); //ASIGNA VALOR AL CAMPO PERFIL
+
+            // modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#usuario-id").val(array[2]);
+            modal.find("#usuario-name").val(array[3]);
+            modal.find("#usuario-fnac").val(array[4]);
+            modal.find("#usuario-telefono").val(array[5]);
+            modal.find("#usuario-correo").val(array[6]);
         });
 
         $('#modalPeriodoClases').on('show.bs.modal', function (event) {
