@@ -426,9 +426,8 @@
                                         <td><%=rs.getString(5)%></td>
                                         <td>
                                           <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                            class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                          <a type="button" data-accion="borrar,<%= rs.getString(1) %>" data-target="#modalPeriodoClases" id="<%= rs.getString(1) %>"
-                                            class="btn-borrar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                             class="btn-editar-pclase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <a class="btn-delete-pclase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                           <!-- <a id="<%=rs.getString(1)%>" class="btn-borrar-pclase" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> -->
                                         </td>
                                     </tr>
@@ -936,14 +935,58 @@
         });
 
         // DELETE ACTIONS
-        $(".btn-borrar-pclase").click(function () {
-            $("#modalRuta").modal('hide');
+        $(".btn-delete-pclase").click(function () {
             event.preventDefault();
             $.post(url + "/controlers/delete.jsp", {
                 id        : "borrar-pclase",
                 reg_id    : $(this).attr('id')
             }).done(function (data, status) {
-                messageActive(data);
+                messageActive(data, "Registro Borrado");
+            });
+        });
+        $(".btn-delete-usuario").click(function () {
+            event.preventDefault();
+            $.post(url + "/controlers/delete.jsp", {
+                id        : "borrar-usuario",
+                reg_id    : $(this).attr('id')
+            }).done(function (data, status) {
+                messageActive(data, "Registro Borrado");
+            });
+        });
+        $(".btn-delete-carrera").click(function () {
+            event.preventDefault();
+            $.post(url + "/controlers/delete.jsp", {
+                id        : "borrar-carrera",
+                reg_id    : $(this).attr('id')
+            }).done(function (data, status) {
+                messageActive(data, "Registro Borrado");
+            });
+        });
+        $(".btn-delete-clase").click(function () {
+            event.preventDefault();
+            $.post(url + "/controlers/delete.jsp", {
+                id        : "borrar-clase",
+                reg_id    : $(this).attr('id')
+            }).done(function (data, status) {
+                messageActive(data, "Registro Borrado");
+            });
+        });
+        $(".btn-delete-precio").click(function () {
+            event.preventDefault();
+            $.post(url + "/controlers/delete.jsp", {
+                id        : "borrar-precio",
+                reg_id    : $(this).attr('id')
+            }).done(function (data, status) {
+                messageActive(data, "Registro Borrado");
+            });
+        });
+        $(".btn-delete-ruta").click(function () {
+            event.preventDefault();
+            $.post(url + "/controlers/delete.jsp", {
+                id        : "borrar-ruta",
+                reg_id    : $(this).attr('id')
+            }).done(function (data, status) {
+                messageActive(data, "Registro Borrado");
             });
         });
 
