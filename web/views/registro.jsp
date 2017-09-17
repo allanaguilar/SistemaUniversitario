@@ -88,7 +88,6 @@
                                 <label for="pclase-todate" class="control-label">Fecha Fin:</label>
                                 <input type="date" class="form-control" id="pclase-todate" name="pclase-todate" value="">
                             </div>
-                            <input type="text" class="form-control" id="id" name="pclase-todate" value="">
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -395,7 +394,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPeriodoClases">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear" data-target="#modalPeriodoClases">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -426,10 +425,11 @@
                                         <td><%=rs.getString(4)%></td>
                                         <td><%=rs.getString(5)%></td>
                                         <td>
-                                          <a id="<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>"
-                                            class="btn-editar-pclase" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalPeriodoClases" id=""
+                                            class="btn-editar-pclase" data-toggle="modal" data-accion="editar" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                                           <!-- <a id="<%=rs.getString(1)%>" class="btn-editar-pclase" href="registro.jsp?id=<%=rs.getString(1)%>&id2="><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> -->
                                           <a id="<%=rs.getString(1)%>" class="btn-borrar-pclase" href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          <!-- <button type="button" id="<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" class="btn btn-primary btn-editar-pclase" data-toggle="modal" data-accion="editar" data-target="#modalPeriodoClases">Crear</button> -->
                                         </td>
                                         <td><a href="registro.jsp?id=<%=rs.getString(1)%>&id2=">modificar</a></td>
                                     </tr>
@@ -820,6 +820,32 @@
             modal.find('#usuario-perfil').val(button.data('perfil')); //ASIGNA VALOR AL CAMPO PERFIL
         });
 
+        $('#modalPeriodoClases').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var accionName = "";
+            var title = "Periodo Clase";
+
+            array = button.data('accion');
+            array = array.split(",");
+            switch (array[0]){
+              case "crear":
+                accionName = "Crear - ";
+                break;
+              case "editar":
+                accionName = "Editar - ";
+            }
+
+            modal.find('.modal-title').text(accionName + title);
+            $("#pclase-code").val(array[1]);
+            $("#pclase-name").val(array[2]);
+            $("#pclase-anio").val(array[3]);
+            $("#pclase-frdate").val(array[4]);
+            $("#pclase-todate").val(array[5]);
+            // modal.find('#usuario-perfil').val(button.data('accion')); //ASIGNA VALOR AL CAMPO PERFIL
+
+        });
+
         $(".btn-save-pclase").click(function () {
             $("#modalPeriodoClases").modal('hide');
             // var array = $(this).attr('id');
@@ -910,28 +936,25 @@
             });
         });
 
-        $(".btn-editar-pclase").click(function (){
-          // ShowView("periodos");
-          // location.reload();
-          $("#modalPeriodoClases").modal('show');
-          event.preventDefault();
-          reg_id = $(this).attr('id');
-          $("#pclase-code").val(reg_id);
-          $.post(url + "/views/registro.jsp", {
-              id: $(this).attr('id')
-          }).done(function (data, status) {
-              // messageActive(data);
-          });
+        // $(".btn-editar-pclase").click(function (){
+        //   // ShowView("periodos");
+        //   // location.reload();
+        //   // $("#modalPeriodoClases").modal('show');
+        //   // event.preventDefault();
+        //   var modal = $("#modalPeriodoClases");
+        //   var button = $(event.relatedTarget) // Button that triggered the modal
+        //   alert(button.data('accion'));
+        //
+        //   array = $(this).attr('id');
+        //   array = array.split(",");
+        //   $("#pclase-code").val(array[0]);
+        //   $("#pclase-name").val(array[1]);
+        //   $("#pclase-anio").val(array[2]);
+        //   $("#pclase-frdate").val(array[3]);
+        //   $("#pclase-todate").val(array[4]);
+        //
+        // });
 
-        });
-
-        $('#modalPeriodoClases').on('show.bs.modal', function (event) {
-            var modal = $(this);
-            // modal.find('.modal-title').text('New message to ' + recipient)
-            // modal.find('.modal-body input').val(recipient)
-            // $("#pclase-code").val(reg_id);
-            // $("#pclase-name").val("ALGEGRA");
-        });
         //FUNCTIONS
         function messageActive(data){
           if (data.indexOf("ok") >= 0) {
