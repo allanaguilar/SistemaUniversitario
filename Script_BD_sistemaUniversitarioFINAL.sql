@@ -76,7 +76,7 @@ CREATE TABLE notas_alumnos
 
 CREATE TABLE secciones
 (
-	seccion_id VARCHAR2(10) NOT NULL
+	seccion_id VARCHAR2(10) NOT NULL,
 	clase_id_fk VARCHAR2(10) NOT NULL,
 	maestro_id_fk VARCHAR2(100) NOT NULL,
 	comentario VARCHAR2(100)
