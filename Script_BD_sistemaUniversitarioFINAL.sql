@@ -76,9 +76,17 @@ CREATE TABLE notas_alumnos
 
 CREATE TABLE secciones
 (
-	seccion_id VARCHAR2(10) NOT NULL,
+	seccion_id VARCHAR2(10) PRIMARY KEY,
 	clase_id_fk VARCHAR2(10) NOT NULL,
 	maestro_id_fk VARCHAR2(100) NOT NULL,
+	comentario VARCHAR2(100)
+);
+
+CREATE TABLE matricula(
+	matricula_id VARCHAR2(10) PRIMARY KEY,
+	seccion_id_fk VARCHAR2(10) NOT NULL,
+	clase_id_fk VARCHAR2(100) NOT NULL,
+    	alumno_id_fk VARCHAR2(100) NOT NULL,
 	comentario VARCHAR2(100)
 );
 
@@ -105,3 +113,7 @@ ALTER TABLE notas_alumnos ADD CONSTRAINT no_alumno_id_fk foreign key (alumno_id_
 
 ALTER TABLE secciones ADD CONSTRAINT sec_clase_id_fk foreign key (clase_id_fk) references clases (clase_id);
 ALTER TABLE secciones ADD CONSTRAINT sec_maestro_id_fk foreign key (maestro_id_fk) references usuarios (usuario_id);
+
+ALTER TABLE matricula ADD CONSTRAINT mat_clase_id_fk foreign key (clase_id_fk) references clases (clase_id);
+ALTER TABLE matricula ADD CONSTRAINT mat_seccion_id_fk foreign key (seccion_id_fk) references secciones (seccion_id);
+ALTER TABLE matricula ADD CONSTRAINT mat_alumno_id_fk foreign key (alumno_id_fk) references usuarios (usuario_id);
