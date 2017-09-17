@@ -11,33 +11,32 @@
   try {
     OracleConn db = new OracleConn();
     db.conectar();
-    int rowAfected = 0;
 
     if (request.getParameter("id").equals("borrar-pclase")) {
-      rowAfected = db.query.executeUpdate("DELETE FROM periodosclases WHERE periodo_id='" + request.getParameter("reg_id") + "'");
+      int rowAfected = db.query.executeUpdate("DELETE FROM periodosclases WHERE periodo_id='" + request.getParameter("reg_id") + "'");
     }
 
     if (request.getParameter("id").equals("borrar-usuario")) {
-      rowAfected = db.query.executeUpdate("DELETE FROM usuarios WHERE usuario_id='" + request.getParameter("reg_id") + "'");
+      int rowAfected = db.query.executeUpdate("DELETE FROM usuarios WHERE usuario_id='" + request.getParameter("reg_id") + "'");
     }
 
     if (request.getParameter("id").equals("borrar-carrera")) {
-      rowAfected = db.query.executeUpdate("DELETE FROM carreras WHERE carrera_id='" + request.getParameter("reg_id") + "'");
+      int rowAfected = db.query.executeUpdate("DELETE FROM carreras WHERE carrera_id='" + request.getParameter("reg_id") + "'");
     }
 
     if (request.getParameter("id").equals("borrar-clase")) {
-      rowAfected = db.query.executeUpdate("DELETE FROM clases WHERE clase_id='" + request.getParameter("reg_id") + "'");
+      int rowAfected = db.query.executeUpdate("DELETE FROM clases WHERE clase_id='" + request.getParameter("reg_id") + "'");
     }
 
     if (request.getParameter("id").equals("borrar-precio")) {
-      rowAfected = db.query.executeUpdate("DELETE FROM servicios WHERE servicio_id='" + request.getParameter("reg_id") + "'");
+      int rowAfected = db.query.executeUpdate("DELETE FROM servicios WHERE servicio_id='" + request.getParameter("reg_id") + "'");
     }
 
     if (request.getParameter("id").equals("borrar-ruta")) {
-      rowAfected = db.query.executeUpdate("DELETE FROM rutas WHERE ruta_id='" + request.getParameter("reg_id") + "'");
+      int rowAfected = db.query.executeUpdate("DELETE FROM rutas WHERE ruta_id='" + request.getParameter("reg_id") + "'");
     }
 
-    out.print("ok:" + rowAfected); //SI EL INSERT SE HIZO SIN PROBLEMA RETORNO UN OK
+    out.print("ok"); //SI EL INSERT SE HIZO SIN PROBLEMA RETORNO UN OK
     db.desconectar();
   } catch (Exception e) {
     e.printStackTrace();

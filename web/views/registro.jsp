@@ -449,7 +449,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="ALM" data-target="#modalUsuarios">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear,ALM" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -460,6 +460,7 @@
                                 <th>Fecha Nac.</th>
                                 <th>Telefono</th>
                                 <th>Correo</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -479,6 +480,11 @@
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%=  rs.getString(6) + ',' +  rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalUsuarios" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-usuario" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-usuario" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -496,7 +502,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="MAE" data-target="#modalUsuarios">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear,MAE" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -507,6 +513,7 @@
                                 <th>Fecha Nac.</th>
                                 <th>Telefono</th>
                                 <th>Correo</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -525,6 +532,11 @@
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(6) + ',' +  rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalUsuarios" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-usuario" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-usuario" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -543,7 +555,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-perfil="REG" data-target="#modalUsuarios">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear,REG" data-target="#modalUsuarios">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -554,6 +566,7 @@
                                 <th>Fecha Nac.</th>
                                 <th>Telefono</th>
                                 <th>Correo</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -571,6 +584,11 @@
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
                                           <td><%=rs.getString(5)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(6) + ',' + rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4)  + ',' + rs.getString(5) %>" data-target="#modalUsuarios" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-usuario" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-usuario" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -588,7 +606,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCarrera">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear" data-target="#modalCarrera">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -598,6 +616,7 @@
                                 <th>Nombre</th>
                                 <th>Fecha Fund.</th>
                                 <th>Duracion</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -614,6 +633,11 @@
                                         <td><%=rs.getString(2)%></td>
                                         <td><%=rs.getString(3)%></td>
                                         <td><%=rs.getString(4)%></td>
+                                        <td>
+                                          <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2)  + ',' + rs.getString(3)  + ',' + rs.getString(4) %>" data-target="#modalCarrera" id="<%= rs.getString(1) %>"
+                                             class="btn-editar-carrera" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                          <a class="btn-delete-carrera" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                        </td>
                                     </tr>
                             <%  }
                                     db.desconectar();
@@ -632,14 +656,16 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalClase">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear" data-target="#modalClase">Crear</button>
                     </div>
 
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Codigo</th>
+                                <th>Carrera</th>
                                 <th>Nombre</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -653,7 +679,13 @@
                                     while (rs.next()) {%>
                                       <tr>
                                           <td><%=rs.getString(1)%></td>
+                                          <td><%=rs.getString(2)%></td>
                                           <td><%=rs.getString(3)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) %>" data-target="#modalClase" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-clase" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-clase" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -672,7 +704,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPrecio">Crear</button>
+                        <button type="button" class="btn btn-primary" data-accion="crear" data-toggle="modal" data-target="#modalPrecio">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -681,6 +713,7 @@
                                 <th>Codigo</th>
                                 <th>Descripcion</th>
                                 <th>Precio</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -696,6 +729,11 @@
                                             <td><%=rs.getString(1)%></td>
                                             <td><%=rs.getString(2)%></td>
                                             <td><%=rs.getString(3)%></td>
+                                            <td>
+                                              <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) %>" data-target="#modalPrecio" id="<%= rs.getString(1) %>"
+                                                 class="btn-editar-precio" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                              <a class="btn-delete-precio" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                            </td>
                                         </tr>
                             <%}
                                     db.desconectar();
@@ -724,6 +762,7 @@
                                 <th>Descripcion</th>
                                 <th>Origen</th>
                                 <th>Destino</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -742,6 +781,11 @@
                                           <td><%=rs.getString(2)%></td>
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) %>" data-target="#modalRuta" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-ruta" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-ruta" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
                                       </tr>
                             <% }
                                     db.desconectar();
@@ -798,26 +842,8 @@
 
         //MODALS
 
+        // OPEN WINDOW FOR EDIT REG
         // CONTEXTS VIEWS (CONTEXTUALIZAR LOS MODALES, PARA SABER SI ES UN MODAL PARA CREAR, ACTUALIZAR, PERFIL USUARIO)
-        $('#modalUsuarios').on('show.bs.modal', function (event) {
-            var modal = $(this);
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var perfil = "";
-
-            switch (button.data('perfil')){
-              case "ALM":
-                perfil = "Alumno";
-                break;
-              case "MAE":
-                perfil = "Profesor";
-                break;
-              case "REG":
-                perfil = "Administrador";
-            }
-
-            modal.find('.modal-title').text(perfil);
-            modal.find('#usuario-perfil').val(button.data('perfil')); //ASIGNA VALOR AL CAMPO PERFIL
-        });
 
         $('#modalPeriodoClases').on('show.bs.modal', function (event) {
             var modal = $(this);
@@ -840,6 +866,110 @@
             modal.find("#pclase-anio").val(array[3]);
             modal.find("#pclase-frdate").val(array[4]);
             modal.find("#pclase-todate").val(array[5]);
+        });
+
+        $('#modalUsuarios').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var perfil = "";
+            var accionName = "";
+            var perfilid = "";
+
+            array = button.data('accion');
+            array = array.split(",");
+            perfilid = array[1];
+            // alert("alerta: " + perfilid);
+
+            switch (perfilid){
+              case "ALM":
+                perfil = "Alumno";
+                break;
+              case "MAE":
+                perfil = "Profesor";
+                break;
+              case "REG":
+                perfil = "Administrador";
+            }
+
+            if (array[1] == "editar") {
+              accionName = "Editar - ";
+            }else {
+              accionName = "Crear - ";
+            }
+
+            modal.find('.modal-title').text(accionName + perfil);
+            modal.find('#usuario-perfil').val(button.data('perfil')); //ASIGNA VALOR AL CAMPO PERFIL
+
+            // modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#usuario-id").val(array[2]);
+            modal.find("#usuario-name").val(array[3]);
+            modal.find("#usuario-fnac").val(array[4]);
+            modal.find("#usuario-telefono").val(array[5]);
+            modal.find("#usuario-correo").val(array[6]);
+        });
+
+        $('#modalCarrera').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var accionName = "";
+            var title = "Carrera";
+
+            array = button.data('accion');
+            array = array.split(",");
+            switch (array[0]){
+              case "crear":
+                accionName = "Crear - ";
+                break;
+              case "editar":
+                accionName = "Editar - ";
+            }
+            modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#carrera-id").val(array[1]);
+            modal.find("#carrera-comentario").val(array[2]);
+            modal.find("#carrera-fecha").val(array[3]);
+            modal.find("#carrera-duracion").val(array[4]);
+        });
+
+        $('#modalClase').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var accionName = "";
+            var title = "Clase";
+
+            array = button.data('accion');
+            array = array.split(",");
+            switch (array[0]){
+              case "crear":
+                accionName = "Crear - ";
+                break;
+              case "editar":
+                accionName = "Editar - ";
+            }
+            modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#clase-id").val(array[1]);
+            modal.find("#clase-comentario").val(array[3]);
+            modal.find("#clase-carrera").val(array[2]);
+        });
+
+        $('#modalPrecio').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var accionName = "";
+            var title = "Precio";
+
+            array = button.data('accion');
+            array = array.split(",");
+            switch (array[0]){
+              case "crear":
+                accionName = "Crear - ";
+                break;
+              case "editar":
+                accionName = "Editar - ";
+            }
+            modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#precio-id").val(array[1]);
+            modal.find("#precio-comentario").val(array[2]);
+            modal.find("#precio-precio").val(array[3]);
         });
 
         // SAVE & UPDATE ACTIONS
