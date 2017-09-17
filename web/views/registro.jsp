@@ -304,6 +304,8 @@
                     <li role="presentation"><a id="reg-btn-clases" href="#">Clases</a></li>
                     <li role="presentation"><a id="reg-btn-precios" href="#">Precios</a></li>
                     <li role="presentation"><a id="reg-btn-rutas" href="#">Rutas</a></li>
+                    <li role="presentation"><a id="reg-btn-claseMaestro" href="#">Asignar Maestro a Clases</a></li>
+                    <li role="presentation"><a id="reg-btn-matricula" href="#">Matricula</a></li>
                     <li role="presentation"><a id="reg-btn-reportes" href="#">Reportes</a></li>
                     <li role="presentation"><a id="reg-btn-salir" href="#">Salir</a></li>
                 </ul>
