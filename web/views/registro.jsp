@@ -606,7 +606,7 @@
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">
                         <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCarrera">Crear</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear" data-target="#modalCarrera">Crear</button>
                     </div>
 
                     <table class="table table-striped">
@@ -844,6 +844,30 @@
 
         // OPEN WINDOW FOR EDIT REG
         // CONTEXTS VIEWS (CONTEXTUALIZAR LOS MODALES, PARA SABER SI ES UN MODAL PARA CREAR, ACTUALIZAR, PERFIL USUARIO)
+
+        $('#modalPeriodoClases').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var accionName = "";
+            var title = "Periodo Clase";
+
+            array = button.data('accion');
+            array = array.split(",");
+            switch (array[0]){
+              case "crear":
+                accionName = "Crear - ";
+                break;
+              case "editar":
+                accionName = "Editar - ";
+            }
+            modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#pclase-code").val(array[1]);
+            modal.find("#pclase-name").val(array[2]);
+            modal.find("#pclase-anio").val(array[3]);
+            modal.find("#pclase-frdate").val(array[4]);
+            modal.find("#pclase-todate").val(array[5]);
+        });
+
         $('#modalUsuarios').on('show.bs.modal', function (event) {
             var modal = $(this);
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -884,11 +908,11 @@
             modal.find("#usuario-correo").val(array[6]);
         });
 
-        $('#modalPeriodoClases').on('show.bs.modal', function (event) {
+        $('#modalCarrera').on('show.bs.modal', function (event) {
             var modal = $(this);
             var button = $(event.relatedTarget) // Button that triggered the modal
             var accionName = "";
-            var title = "Periodo Clase";
+            var title = "Carrera";
 
             array = button.data('accion');
             array = array.split(",");
@@ -900,11 +924,10 @@
                 accionName = "Editar - ";
             }
             modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
-            modal.find("#pclase-code").val(array[1]);
-            modal.find("#pclase-name").val(array[2]);
-            modal.find("#pclase-anio").val(array[3]);
-            modal.find("#pclase-frdate").val(array[4]);
-            modal.find("#pclase-todate").val(array[5]);
+            modal.find("#carrera-id").val(array[1]);
+            modal.find("#carrera-comentario").val(array[2]);
+            modal.find("#carrera-fecha").val(array[3]);
+            modal.find("#carrera-duracion").val(array[4]);
         });
 
         // SAVE & UPDATE ACTIONS
