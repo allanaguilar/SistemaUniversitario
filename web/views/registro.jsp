@@ -353,6 +353,14 @@
                               </select>
                             </div>
                             <div class="form-group">
+                                <label for="seccion-dias" class="control-label">Dias:</label>
+                                <input type="text" class="form-control" id="seccion-dias" name="seccion-dias">
+                            </div>
+                            <div class="form-group">
+                                <label for="seccion-hora" class="control-label">Hora:</label>
+                                <input type="time" class="form-control" id="seccion-hora" name="seccion-hora">
+                            </div>
+                            <div class="form-group">
                                 <label for="seccion-comentario" class="control-label">Descripcion:</label>
                                 <input type="text" class="form-control" id="seccion-comentario" name="seccion-comentario">
                             </div>
@@ -903,6 +911,8 @@
                                 <th>Clase</th>
                                 <th>Maestro</th>
                                 <th>Descripcion</th>
+                                <th>Dias</th>
+                                <th>Hora</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -922,8 +932,10 @@
                                           <td><%=rs.getString(2)%></td>
                                           <td><%=rs.getString(3)%></td>
                                           <td><%=rs.getString(4)%></td>
+                                          <td><%=rs.getString(5)%></td>
+                                          <td><%=rs.getString(6)%></td>
                                           <td>
-                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) %>" data-target="#modalSeccion" id="<%= rs.getString(1) %>"
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) + ',' + rs.getString(5) + ',' + rs.getString(6) %>" data-target="#modalSeccion" id="<%= rs.getString(1) %>"
                                                class="btn-editar-seccion" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                                             <a class="btn-delete-seccion" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                           </td>
@@ -1272,6 +1284,8 @@
             modal.find("#seccion-claseId").val(array[2]);
             modal.find("#seccion-maestroId").val(array[3]);
             modal.find("#seccion-comentario").val(array[4]);
+            modal.find("#seccion-dias").val(array[5]);
+            modal.find("#seccion-hora").val(array[6]);
         });
 
         // SAVE & UPDATE ACTIONS
@@ -1373,6 +1387,8 @@
                 seccion_id    : $("#seccion-id").val(),
                 clase_id_fk   : $("#seccion-claseId").val(),
                 maestro_id_fk : $("#seccion-maestroId").val(),
+                dias          : $("#seccion-dias").val(),
+                hora          : $("#seccion-hora").val(),
                 comentario    : $("#seccion-comentario").val()
             }).done(function (data, status) {
                 messageActive(data,"Registro guardado.");

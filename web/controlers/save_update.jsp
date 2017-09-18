@@ -148,13 +148,17 @@
           db.query.executeUpdate("UPDATE secciones SET"
             + " clase_id_fk   = '" + request.getParameter("clase_id_fk") + "',"
             + " maestro_id_fk = '" + request.getParameter("maestro_id_fk") + "',"
+            + " dias          = '" + request.getParameter("dias") + "',"
+            + " hora          = '" + request.getParameter("hora") + "',"
             + " comentario    = '" + request.getParameter("comentario") + "'"
             + " WHERE seccion_id = '" + request.getParameter("seccion_id") + "'");
         }else {
-          db.query.executeUpdate("insert into secciones (seccion_id,clase_id_fk,maestro_id_fk,comentario) values('"
+          db.query.executeUpdate("insert into secciones (seccion_id,clase_id_fk,maestro_id_fk,dias,hora,comentario) values('"
             + request.getParameter("seccion_id") + "','"
             + request.getParameter("clase_id_fk") + "','"
             + request.getParameter("maestro_id_fk") + "','"
+            + request.getParameter("dias") + "','"
+            + request.getParameter("hora") + "','"
             + request.getParameter("comentario")
             + "')");
         }
