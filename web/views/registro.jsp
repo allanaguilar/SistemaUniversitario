@@ -196,8 +196,24 @@
                                 <input type="text" class="form-control" id="clase-comentario" name="clase-comentario">
                             </div>
                             <div class="form-group">
-                                <label for="clase-carrera" class="control-label">Carrera:</label>
-                                <input type="text" class="form-control" id="clase-carrera" name="clase-carrera">
+                              <label for="clase-carrera">Carrera:</label>
+                              <select class="form-control" id="clase-carrera">
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM carreras");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
                             </div>
                         </form>
                     </div>
@@ -281,6 +297,83 @@
             </div>
         </div>
 
+        <!-- MODAL - Seccion -->
+        <div class="modal fade" id="modalSeccion" tabindex="-1" role="dialog" aria-labelledby="modalSeccionLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalSeccionLabel">Crear Seccion</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="seccion-id" class="control-label">Codigo:</label>
+                                <input type="text" class="form-control" id="seccion-id" name="seccion-id">
+                            </div>
+                            <div class="form-group">
+                              <label for="seccion-claseId">Clase:</label>
+                              <select class="form-control" id="seccion-claseId">
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM clases");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="seccion-maestroId">Maestro:</label>
+                              <select class="form-control" id="seccion-maestroId">
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'MAE'");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="seccion-dias" class="control-label">Dias:</label>
+                                <input type="text" class="form-control" id="seccion-dias" name="seccion-dias">
+                            </div>
+                            <div class="form-group">
+                                <label for="seccion-hora" class="control-label">Hora:</label>
+                                <input type="time" class="form-control" id="seccion-hora" name="seccion-hora">
+                            </div>
+                            <div class="form-group">
+                                <label for="seccion-comentario" class="control-label">Descripcion:</label>
+                                <input type="text" class="form-control" id="seccion-comentario" name="seccion-comentario">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-save-seccion">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!--MESSAGES-->
         <div id="error-message" class="col-md-4 col-md-offset-4 collapse">
             <div class="alert alert-danger alert-dismissable fade in">
@@ -304,7 +397,7 @@
                     <li role="presentation"><a id="reg-btn-clases" href="#">Clases</a></li>
                     <li role="presentation"><a id="reg-btn-precios" href="#">Precios</a></li>
                     <li role="presentation"><a id="reg-btn-rutas" href="#">Rutas</a></li>
-                    <li role="presentation"><a id="reg-btn-claseMaestro" href="#">Asignar Maestro a Clases</a></li>
+                    <li role="presentation"><a id="reg-btn-secciones" href="#">Secciones (Asignar Maestro a Clases)</a></li>
                     <li role="presentation"><a id="reg-btn-matricula" href="#">Matricula</a></li>
                     <li role="presentation"><a id="reg-btn-reportes" href="#">Reportes</a></li>
                     <li role="presentation"><a id="reg-btn-salir" href="#">Salir</a></li>
@@ -800,6 +893,347 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!--SECCIONES-->
+                <div id="reg-secciones" class="collapse">
+                    <div  class="page-header">
+                        <h1>Secciones</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear" data-target="#modalSeccion">Crear</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Clase</th>
+                                <th>Maestro</th>
+                                <th>Descripcion</th>
+                                <th>Dias</th>
+                                <th>Hora</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                              try {
+
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM secciones");
+                                    rs = db.query.getResultSet();
+
+                                    while (rs.next()) {
+                            %>
+                                      <tr>
+                                          <td><%=rs.getString(1)%></td>
+                                          <td><%=rs.getString(2)%></td>
+                                          <td><%=rs.getString(3)%></td>
+                                          <td><%=rs.getString(4)%></td>
+                                          <td><%=rs.getString(5)%></td>
+                                          <td><%=rs.getString(6)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) + ',' + rs.getString(5) + ',' + rs.getString(6) %>" data-target="#modalSeccion" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-seccion" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-seccion" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
+                                      </tr>
+                            <% }
+                                    db.desconectar();
+                                }
+                                catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--MATRICULA-->
+                <div id="reg-matricula" class="collapse">
+                    <div  class="page-header">
+                        <h1>Matricula</h1>
+                    </div>
+                    <form class="">
+                        <div class="col-sm-12">
+                            <!-- <div class="form-group row">
+                                <label class="control-label col-sm-2" for="email">Alumno</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="matricula-alumnoId" placeholder="">
+                                </div>
+                            </div> -->
+                            <div class="form-group row">
+                              <label for="matricula-alumnoId">Alumno:</label>
+                              <select class="form-control" id="matricula-alumnoId">
+                                <option selected="selected" value="">---</option>
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'ALM'");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
+                            </div>
+                            <div class="form-group row">
+                              <label for="matricula-carreraId">Carrera:</label>
+                              <select class="form-control" id="matricula-carreraId">
+                                <option selected="selected" value="">---</option>
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM carreras");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        Clase
+                                    </div>
+                                    <div class="col-sm-3">
+                                        Seccion
+                                    </div>
+                                    <div class="col-sm-3">
+                                        Dias
+                                    </div>
+                                    <div class="col-sm-3">
+                                        Hora
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-claseId1" name="matricula-claseId1">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM clases");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
+                                    </div>
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-seccionId1" name="matricula-seccionId1">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM secciones");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" disabled class="form-control" id="matricula-dias1" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" disabled class="form-control" id="matricula-hora1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-claseId2">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM clases");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
+                                    </div>
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-seccionId2" name="matricula-seccionId2">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM secciones");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" disabled class="form-control" id="matricula-dias2" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" disabled class="form-control" id="matricula-hora2" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-claseId3">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM clases");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
+                                    </div>
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-seccionId3" name="matricula-seccionId3">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM secciones");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" disabled class="form-control" id="matricula-dias3" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" disabled class="form-control" id="matricula-hora3" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-claseId4">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM clases");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
+                                    </div>
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-seccionId4" name="matricula-seccionId4">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM secciones");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" disabled class="form-control" id="matricula-dias4" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" disabled class="form-control" id="matricula-hora4" placeholder="">
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-sm-offset-8 col-sm-2">
+                                        <button type="submit" class="btn btn-primary btn-cancel">Cancelar</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="submit" class="btn btn-primary btn-save-matricula">Matricular</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
 
@@ -810,7 +1244,7 @@
         var url = "http://localhost:9999/SistemaUniversitario";
         var reg_id = "";
 
-        //OPEN REGS
+        //OPEN LIST REGS
         $("#reg-info-gen").click(function () {
             ShowView("confi_sis");
         });
@@ -840,6 +1274,12 @@
         });
         $("#reg-btn-rutas").click(function () {
             ShowView("rutas");
+        });
+        $("#reg-btn-secciones").click(function () {
+            ShowView("secciones");
+        });
+        $("#reg-btn-matricula").click(function () {
+            ShowView("matricula");
         });
 
         //MODALS
@@ -996,6 +1436,30 @@
             modal.find("#ruta-destino").val(array[4]);
         });
 
+        $('#modalSeccion').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var accionName = "";
+            var title = "Seccion";
+
+            array = button.data('accion');
+            array = array.split(",");
+            switch (array[0]){
+              case "crear":
+                accionName = "Crear - ";
+                break;
+              case "editar":
+                accionName = "Editar - ";
+            }
+            modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#seccion-id").val(array[1]);
+            modal.find("#seccion-claseId").val(array[2]);
+            modal.find("#seccion-maestroId").val(array[3]);
+            modal.find("#seccion-comentario").val(array[4]);
+            modal.find("#seccion-dias").val(array[5]);
+            modal.find("#seccion-hora").val(array[6]);
+        });
+
         // SAVE & UPDATE ACTIONS
         $(".btn-save-pclase").click(function () {
             $("#modalPeriodoClases").modal('hide');
@@ -1087,6 +1551,43 @@
             });
         });
 
+        $(".btn-save-seccion").click(function () {
+            $("#modalSeccion").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/save_update.jsp", {
+                id            : "crear-seccion",
+                seccion_id    : $("#seccion-id").val(),
+                clase_id_fk   : $("#seccion-claseId").val(),
+                maestro_id_fk : $("#seccion-maestroId").val(),
+                dias          : $("#seccion-dias").val(),
+                hora          : $("#seccion-hora").val(),
+                comentario    : $("#seccion-comentario").val()
+            }).done(function (data, status) {
+                messageActive(data,"Registro guardado.");
+            });
+        });
+
+        $(".btn-save-matricula").click(function () {
+            // $("#modalSeccion").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/save_update.jsp", {
+                id          : "crear-matricula",
+                alumnoId    : $("#matricula-alumnoId").val(),
+                carreraId   : $("#matricula-carreraId").val(),
+                claseId1    : $("#matricula-claseId1").val(),
+                claseId2    : $("#matricula-claseId2").val(),
+                claseId3    : $("#matricula-claseId3").val(),
+                claseId4    : $("#matricula-claseId4").val(),
+                seccionId1  : $("#matricula-seccionId1").val(),
+                seccionId2  : $("#matricula-seccionId2").val(),
+                seccionId3  : $("#matricula-seccionId3").val(),
+                seccionId4  : $("#matricula-seccionId4").val()
+                // comentario  : $("#matricula-comentario").val()
+            }).done(function (data, status) {
+                messageActive(data,"Registro guardado.");
+            });
+        });
+
         // DELETE ACTIONS
         $(".btn-delete-pclase").click(function () {
           if (confirm("Borrar Registro?")) {
@@ -1121,6 +1622,12 @@
         $(".btn-delete-ruta").click(function () {
           if (confirm("Borrar Registro?")) {
             deleteRegister("borrar-ruta", $(this).attr('id'));
+          }
+
+        });
+        $(".btn-delete-seccion").click(function () {
+          if (confirm("Borrar Registro?")) {
+            deleteRegister("borrar-seccion", $(this).attr('id'));
           }
 
         });
@@ -1159,6 +1666,8 @@
             rutas = "hide";
             admin = "hide";
             reportes = "hide";
+            secciones = "hide";
+            matricula = "hide";
             switch (view_id) {
                 case "title":
                     title = "show";
@@ -1193,7 +1702,12 @@
                 case "reportes":
                     reportes = "show";
                     break;
-
+                case "secciones":
+                    secciones = "show";
+                    break;
+                case "matricula":
+                    matricula = "show";
+                    break;
             }
             $("#reg-title").collapse(title);
             $("#reg-confi-sis").collapse(confi_sis);
@@ -1206,6 +1720,8 @@
             $("#reg-precios").collapse(precios);
             $("#reg-rutas").collapse(rutas);
             $("#reg-reportes").collapse(reportes);
+            $("#reg-secciones").collapse(secciones);
+            $("#reg-matricula").collapse(matricula);
             $("#error-message").collapse("hide");
         }
     </script>
