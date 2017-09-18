@@ -196,8 +196,24 @@
                                 <input type="text" class="form-control" id="clase-comentario" name="clase-comentario">
                             </div>
                             <div class="form-group">
-                                <label for="clase-carrera" class="control-label">Carrera:</label>
-                                <input type="text" class="form-control" id="clase-carrera" name="clase-carrera">
+                              <label for="clase-carrera">Carrera:</label>
+                              <select class="form-control" id="clase-carrera">
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM carreras");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
                             </div>
                         </form>
                     </div>
