@@ -959,17 +959,53 @@
                     </div>
                     <form class="">
                         <div class="col-sm-12">
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <label class="control-label col-sm-2" for="email">Alumno</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="matricula-alumnoId" placeholder="">
                                 </div>
+                            </div> -->
+                            <div class="form-group row">
+                              <label for="matricula-alumnoId">Alumno:</label>
+                              <select class="form-control" id="matricula-alumnoId">
+                                <option selected="selected" value="">---</option>
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'ALM'");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
                             </div>
                             <div class="form-group row">
-                                <label class="control-label col-sm-2" for="email">Carrera</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="matricula-carreraId" placeholder="">
-                                </div>
+                              <label for="matricula-carreraId">Carrera:</label>
+                              <select class="form-control" id="matricula-carreraId">
+                                <option selected="selected" value="">---</option>
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM carreras");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
                             </div>
 
                             <div class="col-sm-12">
@@ -989,8 +1025,25 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-sm-3">
-                                        <input type="text" class="form-control" id="matricula-claseId1" placeholder="">
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-claseId1">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM clases");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="matricula-seccionId1" placeholder="">
@@ -1003,8 +1056,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-3">
-                                        <input type="text" class="form-control" id="matricula-claseId2" placeholder="">
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-claseId1">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM clases");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="matricula-seccionId2" placeholder="">
@@ -1017,8 +1087,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-3">
-                                        <input type="text" class="form-control" id="matricula-claseId3" placeholder="">
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-claseId1">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM clases");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="matricula-seccionId3" placeholder="">
@@ -1031,8 +1118,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-3">
-                                        <input type="text" class="form-control" id="matricula-claseId4" placeholder="">
+                                    <div class="form-group row col-sm-3">
+                                      <select class="form-control" id="matricula-claseId1">
+                                        <option selected="selected" value="">---</option>
+                                        <%
+                                            try {
+                                                db.conectar();
+                                                db.query.execute("SELECT * FROM clases");
+                                                rs = db.query.getResultSet();
+                                                while (rs.next()) {
+                                        %>
+                                        <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                        <%
+                                                }
+                                                db.desconectar();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                      </select>
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="matricula-seccionId4" placeholder="">
