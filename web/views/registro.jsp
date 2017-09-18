@@ -1224,7 +1224,7 @@
                                         <button type="submit" class="btn btn-primary btn-cancel">Cancelar</button>
                                     </div>
                                     <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-primary">Matricular</button>
+                                        <button type="submit" class="btn btn-primary btn-save-matricula">Matricular</button>
                                     </div>
                                 </div>
                             </div>
@@ -1562,6 +1562,27 @@
                 dias          : $("#seccion-dias").val(),
                 hora          : $("#seccion-hora").val(),
                 comentario    : $("#seccion-comentario").val()
+            }).done(function (data, status) {
+                messageActive(data,"Registro guardado.");
+            });
+        });
+
+        $(".btn-save-matricula").click(function () {
+            // $("#modalSeccion").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/save_update.jsp", {
+                id          : "crear-matricula",
+                alumnoId    : $("#matricula-alumnoId").val(),
+                carreraId   : $("#matricula-carreraId").val(),
+                claseId1    : $("#matricula-claseId1").val(),
+                claseId2    : $("#matricula-claseId2").val(),
+                claseId3    : $("#matricula-claseId3").val(),
+                claseId4    : $("#matricula-claseId4").val(),
+                seccionId1  : $("#matricula-seccionId1").val(),
+                seccionId2  : $("#matricula-seccionId2").val(),
+                seccionId3  : $("#matricula-seccionId3").val(),
+                seccionId4  : $("#matricula-seccionId4").val()
+                // comentario  : $("#matricula-comentario").val()
             }).done(function (data, status) {
                 messageActive(data,"Registro guardado.");
             });

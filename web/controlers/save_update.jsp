@@ -164,6 +164,40 @@
         }
       }
 
+      // CREAR MATRICULA
+      if (request.getParameter("id").equals("crear-matricula")) {
+        if (request.getParameter("seccionId1").length() > 0) {
+          db.query.executeUpdate("insert into matricula (seccion_id_fk, clase_id_fk, alumno_id_fk) values('"
+            + request.getParameter("seccionId1") + "','"
+            + request.getParameter("claseId1") + "','"
+            + request.getParameter("alumnoId")
+            + "')");
+        }
+
+        if (request.getParameter("seccionId2").length() > 0) {
+          db.query.executeUpdate("insert into matricula (seccion_id_fk, clase_id_fk, alumno_id_fk) values('"
+            + request.getParameter("seccionId2") + "','"
+            + request.getParameter("claseId2") + "','"
+            + request.getParameter("alumnoId")
+            + "')");
+        }
+        if (request.getParameter("seccionId3").length() > 0) {
+          db.query.executeUpdate("insert into matricula (seccion_id_fk, clase_id_fk, alumno_id_fk) values('"
+            + request.getParameter("seccionId3") + "','"
+            + request.getParameter("claseId3") + "','"
+            + request.getParameter("alumnoId")
+            + "')");
+        }
+
+        if (request.getParameter("seccionId4").length() > 0) {
+          db.query.executeUpdate("insert into matricula (seccion_id_fk, clase_id_fk, alumno_id_fk) values('"
+            + request.getParameter("seccionId4") + "','"
+            + request.getParameter("claseId4") + "','"
+            + request.getParameter("alumnoId")
+            + "')");
+        }
+      }
+
       out.print("ok"); //SI EL INSERT SE HIZO SIN PROBLEMA RETORNO UN OK
       db.desconectar();
     } catch (Exception e) {
