@@ -140,6 +140,26 @@
         }
       }
 
+      // CREAR SECCIONES
+      if (request.getParameter("id").equals("crear-seccion")) {
+        db.query.execute("SELECT seccion_id FROM secciones WHERE seccion_id='" + request.getParameter("seccion_id") + "'");
+        rs = db.query.getResultSet();
+        if (rs.next()) {
+          db.query.executeUpdate("UPDATE secciones SET"
+            + " clase_id_fk   = '" + request.getParameter("clase_id_fk") + "',"
+            + " maestro_id_fk = '" + request.getParameter("maestro_id_fk") + "',"
+            + " comentario    = '" + request.getParameter("comentario") + "'"
+            + " WHERE seccion_id = '" + request.getParameter("seccion_id") + "'");
+        }else {
+          db.query.executeUpdate("insert into secciones (seccion_id,clase_id_fk,maestro_id_fk,comentario) values('"
+            + request.getParameter("seccion_id") + "','"
+            + request.getParameter("clase_id_fk") + "','"
+            + request.getParameter("maestro_id_fk") + "','"
+            + request.getParameter("comentario")
+            + "')");
+        }
+      }
+
       out.print("ok"); //SI EL INSERT SE HIZO SIN PROBLEMA RETORNO UN OK
       db.desconectar();
     } catch (Exception e) {

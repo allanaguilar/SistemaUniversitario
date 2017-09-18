@@ -281,6 +281,42 @@
             </div>
         </div>
 
+        <!-- MODAL - Seccion -->
+        <div class="modal fade" id="modalSeccion" tabindex="-1" role="dialog" aria-labelledby="modalSeccionLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalSeccionLabel">Crear Seccion</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="seccion-id" class="control-label">Codigo:</label>
+                                <input type="text" class="form-control" id="seccion-id" name="seccion-id">
+                            </div>
+                            <div class="form-group">
+                                <label for="seccion-claseId" class="control-label">Clase:</label>
+                                <input type="text" class="form-control" id="seccion-claseId" name="seccion-claseId">
+                            </div>
+                            <div class="form-group">
+                                <label for="seccion-maestroId" class="control-label">Maestro:</label>
+                                <input type="text" class="form-control" id="seccion-maestroId" name="seccion-maestroId">
+                            </div>
+                            <div class="form-group">
+                                <label for="seccion-comentario" class="control-label">Descripcion:</label>
+                                <input type="text" class="form-control" id="seccion-comentario" name="seccion-comentario">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-save-seccion">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!--MESSAGES-->
         <div id="error-message" class="col-md-4 col-md-offset-4 collapse">
             <div class="alert alert-danger alert-dismissable fade in">
@@ -304,7 +340,7 @@
                     <li role="presentation"><a id="reg-btn-clases" href="#">Clases</a></li>
                     <li role="presentation"><a id="reg-btn-precios" href="#">Precios</a></li>
                     <li role="presentation"><a id="reg-btn-rutas" href="#">Rutas</a></li>
-                    <li role="presentation"><a id="reg-btn-claseMaestro" href="#">Asignar Maestro a Clases</a></li>
+                    <li role="presentation"><a id="reg-btn-secciones" href="#">Secciones (Asignar Maestro a Clases)</a></li>
                     <li role="presentation"><a id="reg-btn-matricula" href="#">Matricula</a></li>
                     <li role="presentation"><a id="reg-btn-reportes" href="#">Reportes</a></li>
                     <li role="presentation"><a id="reg-btn-salir" href="#">Salir</a></li>
@@ -800,6 +836,61 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!--SECCIONES-->
+                <div id="reg-secciones" class="collapse">
+                    <div  class="page-header">
+                        <h1>Secciones</h1>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary btn-cancel">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-accion="crear" data-target="#modalSeccion">Crear</button>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Clase</th>
+                                <th>Maestro</th>
+                                <th>Descripcion</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%
+                              try {
+
+                                    db.conectar();
+                                    db.query.execute("SELECT * FROM secciones");
+                                    rs = db.query.getResultSet();
+
+                                    while (rs.next()) {
+                            %>
+                                      <tr>
+                                          <td><%=rs.getString(1)%></td>
+                                          <td><%=rs.getString(2)%></td>
+                                          <td><%=rs.getString(3)%></td>
+                                          <td><%=rs.getString(4)%></td>
+                                          <td>
+                                            <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) %>" data-target="#modalSeccion" id="<%= rs.getString(1) %>"
+                                               class="btn-editar-seccion" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                            <a class="btn-delete-seccion" id="<%= rs.getString(1) %>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                                          </td>
+                                      </tr>
+                            <% }
+                                    db.desconectar();
+                                }
+                                catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %>
+
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
 
@@ -810,7 +901,7 @@
         var url = "http://localhost:9999/SistemaUniversitario";
         var reg_id = "";
 
-        //OPEN REGS
+        //OPEN LIST REGS
         $("#reg-info-gen").click(function () {
             ShowView("confi_sis");
         });
@@ -840,6 +931,9 @@
         });
         $("#reg-btn-rutas").click(function () {
             ShowView("rutas");
+        });
+        $("#reg-btn-secciones").click(function () {
+            ShowView("secciones");
         });
 
         //MODALS
@@ -1087,6 +1181,20 @@
             });
         });
 
+        $(".btn-save-seccion").click(function () {
+            $("#modalSeccion").modal('hide');
+            event.preventDefault();
+            $.post(url + "/controlers/save_update.jsp", {
+                id            : "crear-seccion",
+                seccion_id    : $("#seccion-id").val(),
+                clase_id_fk   : $("#seccion-claseId").val(),
+                maestro_id_fk : $("#seccion-maestroId").val(),
+                comentario    : $("#seccion-comentario").val()
+            }).done(function (data, status) {
+                messageActive(data,"Registro guardado.");
+            });
+        });
+
         // DELETE ACTIONS
         $(".btn-delete-pclase").click(function () {
           if (confirm("Borrar Registro?")) {
@@ -1121,6 +1229,12 @@
         $(".btn-delete-ruta").click(function () {
           if (confirm("Borrar Registro?")) {
             deleteRegister("borrar-ruta", $(this).attr('id'));
+          }
+
+        });
+        $(".btn-delete-seccion").click(function () {
+          if (confirm("Borrar Registro?")) {
+            deleteRegister("borrar-seccion", $(this).attr('id'));
           }
 
         });
@@ -1159,6 +1273,8 @@
             rutas = "hide";
             admin = "hide";
             reportes = "hide";
+            secciones = "hide";
+            matricula = "hide";
             switch (view_id) {
                 case "title":
                     title = "show";
@@ -1193,7 +1309,12 @@
                 case "reportes":
                     reportes = "show";
                     break;
-
+                case "secciones":
+                    secciones = "show";
+                    break;
+                case "matricula":
+                    matricula = "show";
+                    break;
             }
             $("#reg-title").collapse(title);
             $("#reg-confi-sis").collapse(confi_sis);
@@ -1206,6 +1327,8 @@
             $("#reg-precios").collapse(precios);
             $("#reg-rutas").collapse(rutas);
             $("#reg-reportes").collapse(reportes);
+            $("#reg-secciones").collapse(secciones);
+            $("#reg-matricula").collapse(matricula);
             $("#error-message").collapse("hide");
         }
     </script>
