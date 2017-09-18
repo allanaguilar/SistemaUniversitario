@@ -1090,6 +1090,28 @@
             modal.find("#ruta-destino").val(array[4]);
         });
 
+        $('#modalSeccion').on('show.bs.modal', function (event) {
+            var modal = $(this);
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var accionName = "";
+            var title = "Seccion";
+
+            array = button.data('accion');
+            array = array.split(",");
+            switch (array[0]){
+              case "crear":
+                accionName = "Crear - ";
+                break;
+              case "editar":
+                accionName = "Editar - ";
+            }
+            modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            modal.find("#seccion-id").val(array[1]);
+            modal.find("#seccion-claseId").val(array[2]);
+            modal.find("#seccion-maestroId").val(array[3]);
+            modal.find("#seccion-comentario").val(array[4]);
+        });
+
         // SAVE & UPDATE ACTIONS
         $(".btn-save-pclase").click(function () {
             $("#modalPeriodoClases").modal('hide');
