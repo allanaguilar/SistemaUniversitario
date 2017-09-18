@@ -940,6 +940,116 @@
                     </table>
                 </div>
 
+                <!--MATRICULA-->
+                <div id="reg-matricula" class="collapse">
+                    <div  class="page-header">
+                        <h1>Matricula</h1>
+                    </div>
+                    <form class="">
+                        <div class="col-sm-12">
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="email">Alumno</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="matricula-alumnoId" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="email">Carrera</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="matricula-carreraId" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        Clase
+                                    </div>
+                                    <div class="col-sm-3">
+                                        Seccion
+                                    </div>
+                                    <div class="col-sm-3">
+                                        Dias
+                                    </div>
+                                    <div class="col-sm-3">
+                                        Hora
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="matricula-claseId1" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="matricula-seccionId1" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" disabled class="form-control" id="matricula-dias1" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" disabled class="form-control" id="matricula-hora1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="matricula-claseId2" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="matricula-seccionId2" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" disabled class="form-control" id="matricula-dias2" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" disabled class="form-control" id="matricula-hora2" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="matricula-claseId3" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="matricula-seccionId3" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" disabled class="form-control" id="matricula-dias3" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" disabled class="form-control" id="matricula-hora3" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="matricula-claseId4" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="matricula-seccionId4" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" disabled class="form-control" id="matricula-dias4" placeholder="">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" disabled class="form-control" id="matricula-hora4" placeholder="">
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-sm-offset-8 col-sm-2">
+                                        <button type="submit" class="btn btn-primary btn-cancel">Cancelar</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="submit" class="btn btn-primary">Matricular</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
 
@@ -983,6 +1093,9 @@
         });
         $("#reg-btn-secciones").click(function () {
             ShowView("secciones");
+        });
+        $("#reg-btn-matricula").click(function () {
+            ShowView("matricula");
         });
 
         //MODALS
