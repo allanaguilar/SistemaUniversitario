@@ -296,12 +296,45 @@
                                 <input type="text" class="form-control" id="seccion-id" name="seccion-id">
                             </div>
                             <div class="form-group">
-                                <label for="seccion-claseId" class="control-label">Clase:</label>
-                                <input type="text" class="form-control" id="seccion-claseId" name="seccion-claseId">
+                              <label for="seccion-claseId">Clase:</label>
+                              <select class="form-control" id="seccion-claseId">
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM clases");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
                             </div>
+
                             <div class="form-group">
-                                <label for="seccion-maestroId" class="control-label">Maestro:</label>
-                                <input type="text" class="form-control" id="seccion-maestroId" name="seccion-maestroId">
+                              <label for="seccion-maestroId">Maestro:</label>
+                              <select class="form-control" id="seccion-maestroId">
+                                <%
+                                    try {
+                                        db.conectar();
+                                        db.query.execute("SELECT * FROM usuarios WHERE perfil_id_fk = 'MAE'");
+                                        rs = db.query.getResultSet();
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1) + " - " + rs.getString(2)%></option>
+                                <%
+                                        }
+                                        db.desconectar();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                              </select>
                             </div>
                             <div class="form-group">
                                 <label for="seccion-comentario" class="control-label">Descripcion:</label>
