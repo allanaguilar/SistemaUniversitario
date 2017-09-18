@@ -79,6 +79,8 @@ CREATE TABLE secciones
 	seccion_id VARCHAR2(10) PRIMARY KEY,
 	clase_id_fk VARCHAR2(10) NOT NULL,
 	maestro_id_fk VARCHAR2(100) NOT NULL,
+	dias VARCHAR2(100),
+	hora VARCHAR2(100),
 	comentario VARCHAR2(100)
 );
 
