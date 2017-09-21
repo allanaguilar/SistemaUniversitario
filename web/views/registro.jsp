@@ -399,6 +399,7 @@
                     <li role="presentation"><a id="reg-btn-rutas" href="#">Rutas</a></li>
                     <li role="presentation"><a id="reg-btn-secciones" href="#">Secciones (Asignar Maestro a Clases)</a></li>
                     <li role="presentation"><a id="reg-btn-matricula" href="#">Matricula</a></li>
+                    <li role="presentation"><a id="reg-btn-matricula" href="#">Matricula</a></li>
                     <li role="presentation"><a id="reg-btn-reportes" href="#">Reportes</a></li>
                     <li role="presentation"><a id="reg-btn-salir" href="#">Salir</a></li>
                 </ul>
@@ -1248,6 +1249,16 @@
                         </div>
                     </form>
                 </div>
+                <div id="reg-reportes" class="collapse">
+                    <div  class="page-header">
+                        <h1>Reportes</h1>
+                    </div>
+                    <ul>
+                      <li><button type="button" class="btn btn-link">Reporte de Matricula</button></li>
+                      <li><button type="button" class="btn btn-link">Calificaciones</button></li>
+                      <li><button type="button" class="btn btn-link">Reclamos por fallas de equipos</button></li>
+                    </ul>
+                </div>
 
             </div>
         </div>
@@ -1294,7 +1305,10 @@
             ShowView("secciones");
         });
         $("#reg-btn-matricula").click(function () {
-            ShowView("matricula");
+          ShowView("matricula");
+        });
+        $("#reg-btn-reportes").click(function () {
+            ShowView("reportes");
         });
 
         //MODALS
