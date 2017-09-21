@@ -418,65 +418,80 @@
                     <div  class="page-header">
                         <h1>Informacion general del sistema</h1>
                     </div>
+
+                    <%
+                    try{
+                            db.conectar();
+                            db.query.execute("SELECT * FROM institucion_info WHERE institucion_id = '1'");
+                            rs = db.query.getResultSet();
+                            rs.next();
+
+                    %>
+
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Nombre</label>
+                            <label class="control-label col-sm-2" for="instInfo-nombre">Nombre</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="uni-nombre" placeholder="Escriba el nombre de la insitucion">
+                                <input type="text" class="form-control" id="instInfo-nombre" value="<%=rs.getString("nombre")%>" placeholder="Escriba el nombre de la insitucion">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Telefono</label>
+                            <label class="control-label col-sm-2" for="instInfo-telefono">Telefono</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="uni-nombre" placeholder="Escriba el telefono de la insitucion">
+                                <input type="text" class="form-control" id="instInfo-telefono" value="<%=rs.getString("telefono")%>" placeholder="Escriba el telefono de la insitucion">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Correo</label>
+                            <label class="control-label col-sm-2" for="instInfo-correo">Correo</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="uni-nombre" placeholder="Escriba el correo de la insitucion">
+                                <input type="email" class="form-control" id="instInfo-correo" value="<%=rs.getString("correo")%>" placeholder="Escriba el correo de la insitucion">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Ubicacion Geografica</label>
+                            <label class="control-label col-sm-2" for="instInfo-ubicacion_geo">Ubicacion Geografica</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="uni-nombre" placeholder="Latitud/Longitud">
+                                <input type="text" class="form-control" id="instInfo-ubicacion_geo" value="<%=rs.getString("ubicacion_geo")%>" placeholder="Latitud/Longitud">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="comment">Direccion Fisica</label>
+                            <label class="control-label col-sm-2" for="instInfo-direccion_fisica">Direccion Fisica</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba Direccion Fisica"></textarea>
+                                <textarea class="form-control" rows="5" id="instInfo-direccion_fisica" placeholder="Escriba Direccion Fisica"><%=rs.getString("direccion_fisica")%></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="comment">Mision</label>
+                            <label class="control-label col-sm-2" for="instInfo-vision">Mision</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba mision de la institucion"></textarea>
+                                <textarea class="form-control" rows="5" id="instInfo-vision" placeholder="Escriba mision de la institucion"><%=rs.getString("vision")%></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="comment">Vision</label>
+                            <label class="control-label col-sm-2" for="instInfo-mision">Vision</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba vision de la institucion"></textarea>
+                                <textarea class="form-control" rows="5" id="instInfo-mision" placeholder="Escriba vision de la institucion"><%=rs.getString("mision")%></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="comment">Objetivos</label>
+                            <label class="control-label col-sm-2" for="instInfo-objetivos">Objetivos</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba objetivos de la institucion"></textarea>
+                                <textarea class="form-control" rows="5" id="instInfo-objetivos" placeholder="Escriba objetivos de la institucion"><%=rs.getString("objetivos")%></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="comment">Politicas</label>
+                            <label class="control-label col-sm-2" for="instInfo-politicas">Politicas</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" rows="5" id="uni-mision" placeholder="Escriba politicas de la institucion"></textarea>
+                                <textarea class="form-control" rows="5" id="instInfo-politicas" placeholder="Escriba politicas de la institucion"><%=rs.getString("politicas")%></textarea>
                             </div>
                         </div>
-
+                        <%
+                                db.desconectar();
+                            }catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        %>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Guardar</button>
+                                <button type="submit" class="btn btn-default btn-save-instInfo">Guardar</button>
                             </div>
                         </div>
                     </form>
@@ -1461,6 +1476,24 @@
         });
 
         // SAVE & UPDATE ACTIONS
+        $(".btn-save-instInfo").click(function () {
+            event.preventDefault();
+            $.post(url + "/controlers/save_update.jsp", {
+                id              : "crear-instInfo",
+                nombre          : $("#instInfo-nombre").val(),
+                telefono        : $("#instInfo-telefono").val(),
+                correo          : $("#instInfo-correo").val(),
+                ubicacion_geo   : $("#instInfo-ubicacion_geo").val(),
+                direccion_fisica: $("#instInfo-direccion_fisica").val(),
+                vision          : $("#instInfo-vision").val(),
+                mision          : $("#instInfo-mision").val(),
+                objetivos       : $("#instInfo-objetivos").val(),
+                politicas       : $("#instInfo-politicas").val()
+            }).done(function (data, status) {
+                messageActive(data,"Guardado todos los cambios.");
+            });
+            // location.reload();
+        });
         $(".btn-save-pclase").click(function () {
             $("#modalPeriodoClases").modal('hide');
             // var array = $(this).attr('id');

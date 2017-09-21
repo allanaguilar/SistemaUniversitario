@@ -15,6 +15,39 @@
       ResultSet rs;
       String sql;
 
+      // CREAR/ACTUALIZAR INFORMACION DE LA INSTITUCION
+      // ASIGNE institucion_id = 1 PORQUE ESTE LO USO PARA SETTINGS
+      if (request.getParameter("id").equals("crear-instInfo")) {
+        db.query.execute("select institucion_id from institucion_info where institucion_id='" + 1 + "'");
+        rs = db.query.getResultSet();
+        if (rs.next()) {
+          db.query.executeUpdate("update institucion_info SET"
+            + " nombre          = '" + request.getParameter("nombre") + "',"
+            + " telefono        = '" + request.getParameter("telefono") + "',"
+            + " correo          = '" + request.getParameter("correo") + "',"
+            + " ubicacion_geo   = '" + request.getParameter("ubicacion_geo") + "',"
+            + " direccion_fisica= '" + request.getParameter("direccion_fisica") + "',"
+            + " vision          = '" + request.getParameter("vision") + "',"
+            + " mision          = '" + request.getParameter("mision") + "',"
+            + " objetivos       = '" + request.getParameter("objetivos") + "',"
+            + " politicas       = '" + request.getParameter("politicas") + "'"
+            + " WHERE institucion_id = '" + 1 + "'");
+        }else {
+          db.query.executeUpdate("insert into institucion_info (institucion_id,nombre,telefono,correo,ubicacion_geo,direccion_fisica,vision,mision,objetivos,politicas) values('"
+            + 1 + "','"
+            + request.getParameter("nombre") + "','"
+            + request.getParameter("telefono") + "','"
+            + request.getParameter("correo") + "','"
+            + request.getParameter("ubicacion_geo") + "','"
+            + request.getParameter("direccion_fisica") + "','"
+            + request.getParameter("vision") + "','"
+            + request.getParameter("mision") + "','"
+            + request.getParameter("objetivos") + "','"
+            + request.getParameter("politicas")
+            + "')");
+        }
+      }
+
       // CREAR/ACTUALIZAR PERIODOS CLASES
       if (request.getParameter("id").equals("crear-pclass")) {
         db.query.execute("SELECT periodo_id FROM periodosclases WHERE periodo_id='" + request.getParameter("per_id") + "'");
