@@ -148,11 +148,9 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th>Codigo</th>
                                 <th>Clase</th>
-                                <th>Seccion</th>
-                                <th>Nota Acumulativo</th>
-                                <th>Nota Examen</th>
-                                <th></th>
+                                <th>Nota Final</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -161,20 +159,14 @@
                                 try {
 
                                     db.conectar();
-                                    db.query.execute("SELECT clases.comentario, secciones.SECCION_ID, secciones.ACUMULATIVO, secciones.examen, secciones.MAESTRO_ID_FK FROM secciones INNER JOIN clases ON secciones.CLASE_ID_FK = clases.CLASE_ID AND secciones.MAESTRO_ID_FK = '"+ session.getAttribute("s_user") +"'");
+                                    db.query.execute("SELECT matricula.clase_id_fk, clases.COMENTARIO, matricula.ACUMULATIVO, matricula.EXAMEN FROM matricula INNER JOIN CLASES ON clases.clase_id = matricula.clase_id_fk AND matricula.alumno_id_fk = '" + session.getAttribute("s_user") +"'");
                                     rs = db.query.getResultSet();
 
                                     while (rs.next()) {%>
                             <tr>
                                 <td><%=rs.getString(1)%></td>
                                 <td><%=rs.getString(2)%></td>
-                                <td><%=rs.getString(3)%></td>
-                                <td><%=rs.getString(4)%></td>
-                                <td>
-                                    <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) + ',' + rs.getString(5) %>" data-target="#modalPonderaciones" id="<%= rs.getString(1)%>"
-                                       class="btn-editar-ponderacion" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                                    <!-- <a class="btn-delete-pclase" id="<%= rs.getString(1)%>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> -->
-                                </td>
+                                <td><%=rs.getString(3) + rs.getString(4)%></td>
                             </tr>
 
 
