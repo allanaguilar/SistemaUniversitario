@@ -4,6 +4,20 @@
     Author     : aguilar
 --%>
 
+<!--Librerias para graficos-->
+<%@page import="org.jfree.chart.renderer.category.BarRenderer"%>
+<%@page import="org.jfree.chart.plot.CategoryPlot"%>
+<%@page import="org.jfree.chart.plot.PlotOrientation"%>
+<%@page import="org.jfree.data.category.DefaultCategoryDataset"%>
+<%@page import="javax.imageio.ImageIO"%>
+<%@page import="java.io.File"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="java.awt.Color"%>
+<%@page import="org.jfree.chart.ChartFactory"%>
+<%@page import="org.jfree.chart.plot.PiePlot"%>
+<%@page import="org.jfree.chart.JFreeChart"%>
+<%@page import="org.jfree.data.general.DefaultPieDataset"%>
+
 <%@page import = "Dba.OracleConn"%>
 <%@page import = "java.sql.*"%>
 <%@page import = "java.io.*,java.util.*" %>
@@ -1260,6 +1274,7 @@
                         <li><button type="button" class="btn btn-link" onclick="javascript:reporteMatricula()">Reporte de Matricula</button></li>
                         <li><button type="button" class="btn btn-link">Calificaciones</button></li>
                         <li><button type="button" class="btn btn-link">Reclamos por fallas de equipos</button></li>
+                        <li><button type="button" class="btn btn-link">Estadistica de Matricula</button></li>
                     </ul>
                     <div style="visibility: hidden">
                       <div id="reporteMatricula">
@@ -1296,6 +1311,7 @@
                         </table>
                       </div>
                     </div>
+
                 </div>
 
             </div>

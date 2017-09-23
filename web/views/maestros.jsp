@@ -135,7 +135,7 @@
                     </div>
                 </div>
 
-                <!--PERIODOS-->
+                <!--PONDERACION-->
                 <div id="mae-ponderacion" class="collapse">
                     <div  class="page-header">
                         <h1>Ponderacion de Clases</h1>
