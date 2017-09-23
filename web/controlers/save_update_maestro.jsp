@@ -18,10 +18,10 @@
 
       // ACTUALIZAR PONDERACION DE CLASES
       if (request.getParameter("id").equals("asignar-ponderacion")) {
-          db.query.executeUpdate("UPDATE ponderacion_clases SET"
+          db.query.executeUpdate("UPDATE secciones SET"
             + " acumulativo       = '" + request.getParameter("acumulativo") + "',"
             + " examen            = '" + request.getParameter("examen") + "'"
-            + " WHERE clase_id_fk = '" + request.getParameter("clase_id_fk")  + "'"
+            + " WHERE seccion_id  = '" + request.getParameter("seccion_id")  + "'"
             + " AND maestro_id_fk = '" + request.getParameter("maestro")  + "'");
       }
 

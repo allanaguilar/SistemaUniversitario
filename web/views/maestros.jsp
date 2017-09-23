@@ -171,7 +171,7 @@
                                 <td><%=rs.getString(3)%></td>
                                 <td><%=rs.getString(4)%></td>
                                 <td>
-                                    <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) + ',' + rs.getString(4) %>" data-target="#modalPonderaciones" id="<%= rs.getString(1)%>"
+                                    <a type="button" data-accion="editar,<%= rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) + ',' + rs.getString(5) %>" data-target="#modalPonderaciones" id="<%= rs.getString(1)%>"
                                        class="btn-editar-ponderacion" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                                     <!-- <a class="btn-delete-pclase" id="<%= rs.getString(1)%>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> -->
                                 </td>
@@ -306,12 +306,12 @@
 
         // SAVE & UPDATE ACTIONS
         $(".btn-save-ponderacion").click(function () {
-            // //event.preventDefault();
+            $("#modalPonderaciones").modal('hide');
             $.post(url + "/controlers/save_update_maestro.jsp", {
                 id          : "asignar-ponderacion",
                 acumulativo : $("#ponderacion-acumulativo").val(),
                 examen      : $("#ponderacion-examen").val(),
-                clase_id_fk : $("#ponderacion-clase").val(),
+                seccion_id  : $("#ponderacion-seccion").val(),
                 maestro     : $("#ponderacion-maestro").val()
             }).done(function (data, status) {
                 messageActive(data, "Guardado todos los cambios.");
