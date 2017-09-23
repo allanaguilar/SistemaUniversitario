@@ -421,6 +421,7 @@
                     <li role="presentation"><a id="reg-btn-secciones" href="#">Secciones (Asignar Maestro a Clases)</a></li>
                     <li role="presentation"><a id="reg-btn-matricula" href="#">Matricula</a></li>
                     <li role="presentation"><a id="reg-btn-reportes" href="#">Reportes</a></li>
+                    <li role="presentation"><a id="reg-btn-reportes" href="#">Hacer Respaldo</a></li>
                     <li role="presentation"><a id="reg-btn-salir" class="btn-exit" href="#">Salir</a></li>
                 </ul>
             </div>
@@ -515,6 +516,10 @@
                                 <button type="submit" class="btn btn-default btn-save-instInfo">Guardar</button>
                             </div>
                         </div>
+                        <br>
+                        <h1>UBICACION GEOGRAFICA</h1>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.4912767135997!2d-87.17626674974687!3d14.048142294094019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fbcfacdb96c17%3A0x94999a679eabaa4f!2sUNITEC!5e0!3m2!1ses!2shn!4v1506198459699" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
                     </form>
                 </div>
 
