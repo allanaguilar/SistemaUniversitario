@@ -10,11 +10,11 @@
 
 <%//seguridad del sistema%>
 <%
-  
+
     if (session.getAttribute("s_user") == null) {
-            String site = new String("http://localhost:9999/SistemaUniversitario/index.html");
-            response.setStatus(response.SC_MOVED_TEMPORARILY);
-            response.setHeader("Location", site);
+        String site = new String("http://localhost:9999/SistemaUniversitario/index.html");
+        response.setStatus(response.SC_MOVED_TEMPORARILY);
+        response.setHeader("Location", site);
     }
 %>
 
@@ -37,7 +37,7 @@
         <script type="text/javascript" src="jspdf.debug.js"></script>
         <!-- <script src="../statics/js/script.js" type="text/javascript"></script> -->
         <!-- <link href="statics/css/style.css" rel="stylesheet" type="text/css" /> -->
-        <title>Sistema Universitario | Administracion</title>
+        <title>Sistema Universitario | Maestros</title>
     </head>
     <body>
         <!--NAVBAR-->
@@ -134,7 +134,6 @@
                                 <label for="usuario-correo" class="control-label">Correo:</label>
                                 <input type="email" class="form-control" id="usuario-correo" name="usuario-correo">
                             </div>
-                            <!-- <input type="text" class="form-control" id="usuario-perfil" value="" name="usuario-perfil"> -->
                             <input type="hidden" class="form-control" id="usuario-perfil" value="" name="usuario-perfil">
 
                         </form>
@@ -597,7 +596,7 @@
                                 <td><%=rs.getString(4)%></td>
                                 <td><%=rs.getString(5)%></td>
                                 <td>
-                                    <a type="button" data-accion="editar,<%=  rs.getString("perfil_id_fk") + ',' + rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) + ',' + rs.getString(5)%>" data-target="#modalUsuarios" id="<%= rs.getString(1)%>"
+                                    <a type="button" data-accion="editar,<%=  rs.getString(6) + ',' + rs.getString(1) + ',' + rs.getString(2) + ',' + rs.getString(3) + ',' + rs.getString(4) + ',' + rs.getString(5)%>" data-target="#modalUsuarios" id="<%= rs.getString(1)%>"
                                        class="btn-editar-usuario" data-toggle="modal" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                                     <a class="btn-delete-usuario" id="<%= rs.getString(1)%>"  href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                                 </td>
@@ -1387,6 +1386,7 @@
             array = button.data('accion');
             array = array.split(",");
             perfilid = array[1];
+            // alert("alerta: " + perfilid);
 
             switch (perfilid) {
                 case "ALM":
@@ -1399,14 +1399,14 @@
                     perfil = "Administrador";
             }
 
-            if (array[0] == "editar") {
+            if (array[1] == "editar") {
                 accionName = "Editar - ";
             } else {
                 accionName = "Crear - ";
             }
 
             modal.find('.modal-title').text(accionName + perfil);
-            modal.find('#usuario-perfil').val(perfilid); //ASIGNA VALOR AL CAMPO PERFIL
+            modal.find('#usuario-perfil').val(button.data('perfil')); //ASIGNA VALOR AL CAMPO PERFIL
 
             // modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
             modal.find("#usuario-id").val(array[2]);
