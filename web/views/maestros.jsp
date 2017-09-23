@@ -88,7 +88,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="ponderacion-examen" class="control-label">Nota Examen:</label>
-                                <input type="date" class="form-control" id="ponderacion-examen" name="ponderacion-examen" value="">
+                                <input type="number" class="form-control" id="ponderacion-examen" name="ponderacion-examen" value="">
                             </div>
                             <input type="hidden" class="form-control" id="ponderacion-maestro" name="ponderacion-maestro" value="">
                         </form>
