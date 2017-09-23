@@ -1532,7 +1532,7 @@
         // SAVE & UPDATE ACTIONS
         $(".btn-save-instInfo").click(function () {
             // //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-instInfo",
                 nombre: $("#instInfo-nombre").val(),
                 telefono: $("#instInfo-telefono").val(),
@@ -1554,7 +1554,7 @@
             // array = array.split(",");
             // Stop form from submitting normally
             // //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-pclass",
                 per_id: $("#pclase-code").val(),
                 desc: $("#pclase-name").val(),
@@ -1570,7 +1570,7 @@
         $(".btn-save-usuario").click(function () {
             $("#modalUsuarios").modal('hide');
             //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-usuario",
                 usuario_id: $("#usuario-id").val(),
                 nombre: $("#usuario-name").val(),
@@ -1586,7 +1586,7 @@
         $(".btn-save-carrera").click(function () {
             $("#modalCarrera").modal('hide');
             //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-carrera",
                 carrera_id: $("#carrera-id").val(),
                 comentario: $("#carrera-comentario").val(),
@@ -1600,7 +1600,7 @@
         $(".btn-save-clase").click(function () {
             $("#modalClase").modal('hide');
             //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-clase",
                 clase_id: $("#clase-id").val(),
                 carrera_id_fk: $("#clase-carrera").val(),
@@ -1613,7 +1613,7 @@
         $(".btn-save-precio").click(function () {
             $("#modalPrecio").modal('hide');
             //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-precio",
                 servicio_id: $("#precio-id").val(),
                 comentario: $("#precio-comentario").val(),
@@ -1627,7 +1627,7 @@
         $(".btn-save-ruta").click(function () {
             $("#modalRuta").modal('hide');
             //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-ruta",
                 ruta_id: $("#ruta-id").val(),
                 comentario: $("#ruta-comentario").val(),
@@ -1641,7 +1641,7 @@
         $(".btn-save-seccion").click(function () {
             $("#modalSeccion").modal('hide');
             //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-seccion",
                 seccion_id: $("#seccion-id").val(),
                 clase_id_fk: $("#seccion-claseId").val(),
@@ -1657,7 +1657,7 @@
         $(".btn-save-matricula").click(function () {
             // $("#modalSeccion").modal('hide');
             //event.preventDefault();
-            $.post(url + "/controlers/save_update.jsp", {
+            $.post(url + "/controlers/save_update_registro.jsp", {
                 id: "crear-matricula",
                 alumnoId: $("#matricula-alumnoId").val(),
                 carreraId: $("#matricula-carreraId").val(),
