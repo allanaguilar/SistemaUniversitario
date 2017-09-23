@@ -45,7 +45,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Sistema Universitario</a>
+                    <a class="navbar-brand" href="#">Sistema Universitario | Registro</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -1401,14 +1401,17 @@
 
             if (array[0] == "editar") {
                 accionName = "Editar - ";
+                $("#usuario-id").prop('disabled', true);
             } else {
                 accionName = "Crear - ";
+                $("#usuario-id").removeAttr("disabled");
             }
 
             modal.find('.modal-title').text(accionName + perfil);
             modal.find('#usuario-perfil').val(perfilid); //ASIGNA VALOR AL CAMPO PERFIL
 
             // modal.find('.modal-title').text(accionName + title); //ASIGNO TITULO SEGUN CONTEXTO
+            
             modal.find("#usuario-id").val(array[2]);
             modal.find("#usuario-name").val(array[3]);
             modal.find("#usuario-fnac").val(array[4]);

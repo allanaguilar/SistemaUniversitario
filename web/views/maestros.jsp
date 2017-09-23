@@ -45,7 +45,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Sistema Universitario</a>
+                    <a class="navbar-brand" href="#">Sistema Universitario | Maestros</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -413,8 +413,8 @@
                 <div id="reg-title" class="collapse in">
                     <div class="jumbotron">
                         <div class="container">
-                            <h1>Area Administrativa</h1>
-                            <p>Bienvenido al area administrativa del sistema</p>
+                            <h1>Area de Maestros</h1>
+                            <p>Bienvenido al area de Maestros</p>
                         </div>
                     </div>
                 </div>
